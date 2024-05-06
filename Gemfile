@@ -67,4 +67,5 @@ group :test do
 end
 
 # the gems we added
+gem 'awesome_print', '~> 1.9'
 gem 'dotenv-rails', '~> 3.1', '>= 3.1.1'
