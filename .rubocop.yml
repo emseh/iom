@@ -1,0 +1,23 @@
+inherit_from: .rubocop_todo.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
+
+AllCops:
+  DisabledByDefault: false
+  NewCops: enable
+  TargetRubyVersion: 3.2.3
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
+    - vendor/**/*
