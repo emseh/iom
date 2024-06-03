@@ -88,6 +88,24 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
   config.hosts << ENV.fetch('HOST', nil)
   config.consider_all_requests_local = true
+
+  # mailcatcher delivery method. See https://mailcatcher.me/ or https://github.com/sj26/mailcatcher
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: ENV.fetch('HOST', nil) }
+  config.action_mailer.default_options = { from: ENV.fetch('MAILER_SENDER_ADDRESS', nil) }
+  config.action_mailer.smtp_settings = {
+    user_name: ENV.fetch('SMTP_USERNAME', nil),
+    password: ENV.fetch('SMTP_PASSWORD', nil),
+    domain: ENV.fetch('SMTP_DOMAIN', nil),
+    address: ENV.fetch('SMTP_ADDRESS', nil),
+    port: ENV.fetch('SMTP_PORT', nil),
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
+  config.asset_host = ENV.fetch('ASSET_HOST', nil)
 end
 
 # rubocop:enable Metrics/BlockLength
