@@ -5,14 +5,50 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body data-scrollbar-auto-hide="n" class="holdtransition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <%= render "base/header" %>
+      <%= render "base/sidebar" %> 
+      <div class="content-wrapper"> 
+        <div class="content-header"> 
+          <div class="container-fluid"> 
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Starter Page</h1>
+              </div>
+               <!--/.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"> <a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Starter Page</li> </ol>
+              </div>
+              <!--/.col -->
+            </div>
+            <!--/.row -->
+          </div>
+          <!--/.container-fluid -->
+        </div>
+          <div class="content container-fluid">
+            <div class="container-fluid">
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+        <%= render "base/footer" %>
+        <%= render "base/control_sidebar" %>
+      </div>
+    </div>
   </body>
 </html>
