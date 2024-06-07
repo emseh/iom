@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Memo categories</h1>
+
+<div id="memo_categories">
+  <% @memo_categories.each do |memo_category| %>
+    <%= render memo_category %>
+    <p>
+      <%= link_to "Show this memo category", memo_category %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New memo category", new_memo_category_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @memo_category %>
+
+<div>
+  <%= link_to "Edit this memo category", edit_memo_category_path(@memo_category) %> |
+  <%= link_to "Back to memo categories", memo_categories_path %>
+
+  <%= button_to "Destroy this memo category", @memo_category, method: :delete %>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @patner %>
+
+<div>
+  <%= link_to "Edit this patner", edit_patner_path(@patner) %> |
+  <%= link_to "Back to patners", patners_path %>
+
+  <%= button_to "Destroy this patner", @patner, method: :delete %>
+</div>

@@ -1,0 +1,22 @@
+<%= form_with(model: patner) do |form| %>
+  <% if patner.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(patner.errors.count, "error") %> prohibited this patner from being saved:</h2>
+
+      <ul>
+        <% patner.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

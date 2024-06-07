@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Declare categories</h1>
+
+<div id="declare_categories">
+  <% @declare_categories.each do |declare_category| %>
+    <%= render declare_category %>
+    <p>
+      <%= link_to "Show this declare category", declare_category %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New declare category", new_declare_category_path %>

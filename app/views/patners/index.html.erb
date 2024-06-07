@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Patners</h1>
+
+<div id="patners">
+  <% @patners.each do |patner| %>
+    <%= render patner %>
+    <p>
+      <%= link_to "Show this patner", patner %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New patner", new_patner_path %>

@@ -7,9 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable # :omniauthable
 
-  validate :must_have_a_role
-
   after_create :assign_default_role
+  after_create :must_have_a_role
 
   private
 
@@ -19,9 +18,15 @@ class User < ApplicationRecord
 
   def assign_default_role
     add_role(:leader) if roles.blank?
+  rescue ActiveRecord::RecordInvalid => e
+    errors.add(:roles, e.message)
+    throw(:abort)
   end
 
   def must_have_a_role
-    errors.add(:roles, 'must have at least one') unless roles.any?
+    return if roles.any?
+
+    errors.add(:roles, 'must have at least one')
+    throw(:abort)
   end
 end

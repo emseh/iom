@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @declare %>
+
+<div>
+  <%= link_to "Edit this declare", edit_declare_path(@declare) %> |
+  <%= link_to "Back to declares", declares_path %>
+
+  <%= button_to "Destroy this declare", @declare, method: :delete %>
+</div>

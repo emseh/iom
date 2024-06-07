@@ -1,0 +1,26 @@
+<section class='content-full-width'>
+  <div class="fullwidth-section dt-sc-paralax full-pattern3" style="background-position: 50% 48px;">
+    <div class="container">
+      <div class="form-wrapper register">
+        <div class="row">
+          <div class="medium-5 columns">
+            <%= simple_form_for resource, as: resource_name,
+            url: confirmation_path(resource_name),
+            html: { method: :post } do |f| %>
+            <h2 class="border-title aligncenter font14 f-white"><%= title("Didn't receive confirmation instructions?") %></h2>
+            <div class=\"form-inputs\">
+              <%= f.input :email, required: true %>
+            </div>
+            <div class=\"form-actions\">
+              <%= f.button :submit, "Resend confirmation instructions", class: "button-l-text" %>
+            </div>
+            <div class="medium-5 medium-offset-1 columns end">
+              <%= render "users/shared/links" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

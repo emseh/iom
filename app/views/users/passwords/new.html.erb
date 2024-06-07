@@ -1,0 +1,41 @@
+<!--<div id="main-content">-->
+  <section id="primary" class="content-full-width">
+    <div class="fullwidth-section dt-sc-paralax full-pattern3" style="background-position: 50% 48px;">
+      <div class="container">
+        <div class="form-wrapper register">
+          <%= simple_form_for resource,
+          as: resource_name,
+          url: password_path(resource_name),
+          html: { method: :post } do |f| %>
+          <h3 class="border-title aligncenter font14"> <span> <i class="fa fa-user"></i> <%= title("Forgot your password?") %> </span></h3>
+          <div class="form-inputs">
+            <%= f.input :email, required: true %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Send me reset password instructions", class: 'button-l-text' %>
+             <%= render "users/shared/links" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="dt-sc-hr-invisible-medium"></div>
+    <div class="dt-sc-hr-invisible-large"></div> -->
+  </section>
+<!--</div>-->
+<script>
+  $.noConflict();
+  jQuery( document ).ready(function( $ ) {
+        // Code that uses jQuery's $ can follow here.
+      });
+    // Code that uses other library's $ can follow here
+    // $( function() {
+    //     $(".datepicker" ).datepicker();
+    // } );
+  </script>
+
+  <style>
+  .selection-box{
+    width: 30%;
+  }
+</style>

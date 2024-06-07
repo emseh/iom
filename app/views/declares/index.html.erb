@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Declares</h1>
+
+<div id="declares">
+  <% @declares.each do |declare| %>
+    <%= render declare %>
+    <p>
+      <%= link_to "Show this declare", declare %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New declare", new_declare_path %>
