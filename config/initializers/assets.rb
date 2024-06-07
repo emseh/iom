@@ -12,7 +12,10 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules/@fortawes
 Rails.application.config.assets.paths << Rails.root.join("node_modules/admin-lte")
 Rails.application.config.assets.precompile += [
   'node_modules/admin-lte/dist/css/*.css',
-  'node_modules/admin-lte/dist/js/*.js'
+  'node_modules/admin-lte/dist/js/*.js',
+  'node_modules/admin-lte/build/scss/*.scss',
+  'node_modules/admin-lte/build/js/*.js',
+  '*.png'
 ]
 
 # Precompile additional assets.

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Roccaspace | Dashboard</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <%= stylesheet_link_tag "admin" %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <%= csrf_meta_tags %>
+  </head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+   <%= image_tag("qn-logo.png", {:style => "width:300px;"}) %>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group form-check">
+          <%= f.check_box :remember_me, class: 'form-check-input' %>
+          <%= f.label :remember_me, class: 'form-check-label' do %>
+            <%= resource.class.human_attribute_name('remember_me') %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.submit 'sign in', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+</body>
+</html>

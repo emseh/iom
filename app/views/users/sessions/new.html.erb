@@ -1,0 +1,27 @@
+<section id="primary" class="content-full-width content-padd">
+  <div class="fullwidth-section dt-sc-paralax full-pattern3 full-bg-login full-bg">
+    <div class="container">
+      <div class="form-wrapper register">
+        <div class="medium-5 columns">
+          <%= simple_form_for resource, html: {novalidate: false},
+              as: resource_name, url: session_path(resource_name) do |f| %>
+            <h3 class="border-title aligncenter font14">
+              <span> <i class="fa fa-user"></i> Login to your account so we can identify your favourite session. </span>
+            </h3>
+            <div class="form-inputs">
+              <%= f.input :email, label: false, placeholder: 'Email address', required: true, autofocus: true %>
+              <%= f.input :password, label: false, placeholder: 'Password', required: true %>
+            </div>
+            <div class="form-actions flex-column-center">
+              <%= f.input :remember_me, as: :boolean %>
+              <div class="form-submit btn-rocca">
+                <%= f.button :submit, "Sign in" %>
+              </div>
+            </div>
+            <br/>
+            <%= render 'users/shared/links' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

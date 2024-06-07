@@ -94,5 +94,5 @@ gem 'dotenv-rails', '~> 3.1', '>= 3.1.1'
 gem 'faraday', '~> 2.9'
 gem 'kaminari', '~> 1.2'
 gem 'ransack', '~> 4.1'
-
 gem 'rolify', '~> 6.0'
+gem 'simple_form', '~> 5.3'

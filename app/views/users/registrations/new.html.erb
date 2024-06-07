@@ -1,0 +1,30 @@
+<section id="primary" class="content-full-width">
+  <%= render 'form'%>
+</section>
+<script>
+    $.noConflict();
+    jQuery( document ).ready(function($) {
+
+      jQuery('#user_phone_number').mask("(\+62) 000-0000-0000-00")
+
+      change_cities = (element) => {
+        $("#user_user_information_attributes_district_id").empty()
+        $("#user_user_information_attributes_subdistrict_id").empty()
+        $.get("<%= regions_cities_path %>", {province_id: element.value})
+      }
+
+      change_districts = (element) => {
+        $("#user_user_information_attributes_subdistrict_id").empty()
+        $.get("<%= regions_districts_path %>", {city_id: element.value})
+      }
+
+      change_subdistricts = (element) => {
+        $.get("<%= regions_subdistricts_path %>", {district_id: element.value})
+      }
+
+      change_postal_code = (element) => {
+        $.get("<%= regions_postal_code_path %>", {subdistrict_id: element.value})
+      }
+
+    });
+</script>

@@ -1,0 +1,139 @@
+<script
+src="https://code.jquery.com/jquery-3.4.0.js"
+integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+crossorigin="anonymous"></script>
+<div class="fullwidth-section dt-sc-paralax full-pattern3" style="background-position: 50% 48px;">
+  <div class="container">
+    <div class="form-wrapper register">
+      <%= simple_form_for resource,html: {novalidate: false}, as: resource_name, url: registration_path(resource_name) do |f| %>
+        <% if user_signed_in? %>
+          <h3 class="border-title aligncenter font14"><span>Update Information</span></h3>
+        <% else %>
+          <h3 class="border-title aligncenter font14"><span><i class="fa fa-user"></i> Not registered? - Become user today! </span></h3>
+        <% end %>
+        <div class="dt-sc-one-half column first">
+          <%= f.input :first_name, label: false, required: true, autofocus: true, :placeholder => 'First name' %>
+        </div>
+
+        <div class="dt-sc-one-half column">
+          <%= f.input :last_name, label: false, required: false, autofocus: true, :placeholder => 'Last name' %>
+        </div>
+
+        <div class="dt-sc-one-half column first">
+          <%= f.input :email, label: false, required: true, :placeholder => 'Email' %>
+        </div>
+
+        <div class="dt-sc-one-half column">
+          <%= f.input :phone_number, label: false, required: true, :placeholder => "No Telephone"%>
+        </div>
+
+        <div class="dt-sc-one-half column first">
+          <%= f.input :password, placeholder: 'Password', label: false, required: !user_signed_in? %>
+        </div>
+
+        <div class="dt-sc-one-half column">
+          <%= f.input :password_confirmation, placeholder: 'Password Confirmation', label: false, required: !user_signed_in? %>
+        </div>
+        <hr/>
+
+        <!-- user informations --->
+        <%= f.simple_fields_for :user_information do |ui| %>
+          <div class="input">
+            <%= ui.input :gender, label: false, as: :select, collection: [['male', 'Male'], ['female', 'Female']],
+                        label_method: :second, value_method: :first,
+                        selected: ui.object.gender.present? ? ui.object.gender : 'male' %>
+          </div>
+          <div class="input">
+            <%= ui.text_field :address, placeholder: 'Full address', :as => :text, required: false %>
+          </div>
+          <%# <%= ui.country_select :country, ["Indonesia"] %>
+          <div class="dt-sc-one-half column first input">
+            <%= ui.input :province_id, label: false, prompt: '-- Select Province --', collection: Province.order(name: :asc).collect {|province| [province.name, province.id]}, input_html: { onchange: "change_cities(this)" }, required: true %>
+          </div>
+          <div class="dt-sc-one-half column input">
+            <%= ui.input :city_id, label: false, prompt: '-- Can be done after selecting Province --', collection: [], input_html: { onchange: "change_districts(this)" }, required: true %>
+          </div>
+          <div class="dt-sc-one-half column first input">
+            <%= ui.input :district_id, label: false, prompt: '-- Can be done after selecting City --', collection: [], input_html: { onchange: "change_subdistricts(this)" }, required: true %>
+          </div>
+          <div class="dt-sc-one-half column input">
+            <%= ui.input :subdistrict_id, label: false, prompt: '-- Can be done after selecting District --', collection: [], input_html: { onchange: "change_postal_code(this)" } %>
+          </div>
+          <div class="dt-sc-one-half column first input">
+            <%= ui.text_field :postal_code, :placeholder => "Postal code"%>
+          </div>
+          <div class="dt-sc-one-half column input">
+            <%= ui.date_field :dob, label: false, as: :date, value: f.object.try(:strftime,"%m/%d/%Y") , min: Date.today.year - 90, max: Date.today.year - 10, discard_day: false%>
+          </div>
+          <div class="dt-sc-one-halfx input">
+            <%= ui.input :blood_type, label: false, collection: ["A+", "A-","B+","B-", "AB+", "AB-", "O+", "O-" ], :checked => 'A+', :prompt => "Blood Type" %>
+          </div>
+          <div class="dt-sc-one-half column first input">
+            <%#= ui.label "Instagram account" %>
+            <%= ui.text_field :ig_account, :placeholder => "Instagram account" %>
+          </div>
+          <div class="dt-sc-one-half column input">
+            <%#= ui.label "Facebook account" %>
+            <%= ui.text_field :fb_account, :placeholder => 'Facebook Account' %>
+          </div>
+
+            <%#= ui.label "Emergency contact" %>
+            <div class="dt-sc-one-half column first input">
+              <%= ui.text_field :emergency_contact , :placeholder =>"Emergency contact" %></div>
+
+              <%#= ui.label "Emergency Number" %>
+              <div class="dt-sc-one-half column input">
+                <%= ui.text_field :emergency_number, :placeholder => "Emergency Number" %></div>
+              <%#= ui.label "Emergency Address" %>
+              <div class="dt-sc-one-half column first input">
+                <%= ui.text_field :emergency_adress, :placeholder => "Emergency Address" %></div>
+              <%#= ui.label "Emergency Email" %>
+              <div class="dt-sc-one-half column input">
+                <%= ui.text_field :emergency_email, :placeholder => "Emergency Email"  %>
+              </div>
+          <% end %>
+          <% if user_signed_in? %>
+            <%= f.button :submit, "Update" , :class => 'dt-sc-button small' %>
+          <% else %>
+            <%= f.button :submit, "Sign up" , :class => 'dt-sc-button small' %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+    function scrollToInvalid(form) {
+        var navbar = jQuery('.nav-wrapper');
+
+// listen for `invalid` events on all form inputs
+        form.find(':input').on('invalid', function(event) {
+            var input = jQuery(this)
+
+            // the first invalid element in the form
+            var first = form.find(':invalid').first()
+
+            // only handle if this is the first invalid input
+            if (input[0] === first[0]) {
+                // height of the nav bar plus some padding
+                var navbarHeight = navbar.height() + 50
+
+                // the position to scroll to (accounting for the navbar)
+                var elementOffset = input.offset().top - navbarHeight
+
+                // the current scroll position (accounting for the navbar)
+                var pageOffset = window.pageYOffset - navbarHeight
+
+                // don't scroll if the element is already in view
+                if (elementOffset > pageOffset && elementOffset < pageOffset + window.innerHeight) {
+                    return true
+                }
+
+                // note: avoid using animate, as it prevents the validation message displaying correctly
+                jQuery('html,body').scrollTop(elementOffset)
+            }
+        });
+    }
+    // call it like this
+    var form = jQuery('.simple_form.simple-form')   //your form element
+    scrollToInvalid(form);
+</script>

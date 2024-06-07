@@ -1,0 +1,33 @@
+<script src="/assets/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<!--<div id="main-content">-->
+  <section id="primary" class="content-full-width">
+    <div class="dt-sc-hr-invisible"></div>
+    <div class="dt-sc-hr-invisible"></div>
+    <div class="fullwidth-section">
+      <div class="container">
+        <h3 class="border-title aligncenter font14"> <span> <i class="fa fa-user"></i> Hello <%= current_user.full_name%> </span></h3>
+      </div>
+    </div>
+    <%= render 'form'%>
+    <div class="dt-sc-hr-invisible-medium"></div>
+    <div class="dt-sc-hr-invisible-large"></div>
+  </section>
+<!--</div>-->
+<script>
+    $.noConflict();
+    jQuery( document ).ready(function( $ ) {
+        // Code that uses jQuery's $ can follow here.
+    });
+    // Code that uses other library's $ can follow here
+    $( function() {
+        $(".datepicker" ).datepicker();
+    } );
+</script>
+
+<style>
+
+</style>
