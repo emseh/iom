@@ -7,7 +7,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable # :omniauthable
 
-  after_create :assign_default_role
+  has_one :user_information, dependent: :destroy
+
+  accepts_nested_attributes_for :user_information
+
+  before_save :assign_default_role
   after_create :must_have_a_role
 
   private

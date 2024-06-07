@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MemosController < ApplicationController
+class MemosController < AuthenticationController
   before_action :set_memo, only: %i[show edit update destroy]
 
   # GET /memos or /memos.json

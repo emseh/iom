@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Leaders</h1>
+
+<div id="leaders">
+  <% @leaders.each do |leader| %>
+    <%= render leader %>
+    <p>
+      <%= link_to "Show this leader", leader %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New leader", new_leader_path %>
