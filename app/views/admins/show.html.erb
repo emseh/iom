@@ -1,10 +1,82 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @admin %>
-
-<div>
-  <%= link_to "Edit this admin", edit_admin_path(@admin) %> |
-  <%= link_to "Back to admins", admins_path %>
-
-  <%= button_to "Destroy this admin", @admin, method: :delete %>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Admin Details</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered table-striped" id="<%= dom_id(@admin) %>">
+      <tbody>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><%= @admin.email %></td>
+        </tr>
+        <tr>
+          <td><strong>Full Name</strong></td>
+          <td><%= @admin&.user_information&.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Phone Number</strong></td>
+          <td><%= @admin&.user_information&.phone_number %></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-right">
+            <%= link_to admins_path, class: 'btn btn-secondary btn-sm' do %>
+              <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to edit_admin_path(@admin), class: 'btn btn-primary btn-sm ml-2' do %>
+              <i class="fas fa-pencil-alt"></i> Edit
+            <% end %>
+            <%= link_to admin_path(@admin), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+              <i class="fas fa-trash"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
 </div>
+<!-- /.card -->
+
+
+
+
+
+
+<!--<div id="<%#= dom_id @admin %>" class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">User Information</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>
+      <strong>Email:</strong>
+      <span class="text-muted"><%#= @admin.email %></span>
+    </p>
+    <p>
+      <strong>Full Name:</strong>
+      <span class="text-muted"><%#= @admin&.user_information&.full_name %></span>
+    </p>
+    <p>
+      <strong>Phone Number:</strong>
+      <span class="text-muted"><%#= @admin&.user_information&.phone_number %></span>
+    </p>
+  </div>
+</div>-->
+
+
+<%#= render @admin %>
+<!--
+<div>
+  <%#= link_to "Edit this admin", edit_admin_path(@admin) %> |-->
+  <%#= link_to "Back to admins", admins_path %>
+<!---->
+  <%#= button_to "Destroy this admin", @admin, method: :delete %>
+<!--</div>
+-->

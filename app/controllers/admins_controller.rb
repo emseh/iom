@@ -5,7 +5,7 @@ class AdminsController < AuthenticationController
 
   # GET /admins or /admins.json
   def index
-    @admins = Admin.all
+    @admins = Admin.includes(:user_information).all
   end
 
   # GET /admins/1 or /admins/1.json
@@ -14,6 +14,7 @@ class AdminsController < AuthenticationController
   # GET /admins/new
   def new
     @admin = Admin.new
+    @admin.build_user_information # Ensure nested attributes are initialized
   end
 
   # GET /admins/1/edit
@@ -49,7 +50,7 @@ class AdminsController < AuthenticationController
 
   # DELETE /admins/1 or /admins/1.json
   def destroy
-    @admin.destroy!
+    @admin.destroy
 
     respond_to do |format|
       format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
@@ -66,6 +67,8 @@ class AdminsController < AuthenticationController
 
   # Only allow a list of trusted parameters through.
   def admin_params
-    params.fetch(:admin, {})
+    params.require(:admin).permit(:email, :password, :password_confirmation,
+                                  user_information_attributes: [:id, :full_name, :phone_number])
+    # params.fetch(:admin, {})
   end
 end
