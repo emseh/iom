@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @leader %>
+
+<div>
+  <%= link_to "Edit this leader", edit_leader_path(@leader) %> |
+  <%= link_to "Back to leaders", leaders_path %>
+
+  <%= button_to "Destroy this leader", @leader, method: :delete %>
+</div>

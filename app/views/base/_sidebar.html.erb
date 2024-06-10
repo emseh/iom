@@ -10,17 +10,19 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+   <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
         <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block">
+          <p><%#= current_user&.email %></p>
+        </a>
       </div>
-    </div>
+    </div>-->
 
     <!-- SidebarSearch Form -->
-    <div class="form-inline">
+<!--    <div class="form-inline">
       <div class="input-group" data-widget="sidebar-search">
         <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -29,44 +31,108 @@
           </button>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-              with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+        <li class="nav-item user-panel mt-3 pb-3 mb-3">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-list-alt"></i>
             <p>
-              Starter Pages
+              <%= current_user&.email %>
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Active Page</p>
+                <p>Profile</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Inactive Page</p>
+              <a href="/users/sign_out" class="nav-link %>">
+                <i class="fa fa-power-off nav-icon"></i>
+                <p>Logout</p>
               </a>
             </li>
           </ul>
         </li>
+        <!-- Add icons to the links using the .nav-icon class
+              with font-awesome or any other icon font library -->
         <li class="nav-item">
+          <a href="/dashboard" class="nav-link <%= active_class('/dashboard') %>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Dashboard
+              <!--<span class="right badge badge-danger">New</span>-->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Request
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/memos" class="nav-link <%= active_class('/memos') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Memorandum</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/declares" class="nav-link <%= active_class('/declares') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Declare</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-open">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Simple Link
-              <span class="right badge badge-danger">New</span>
+              Master Data
+              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/admins" class="nav-link <%= active_class('/admins') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Admin</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/leaders" class="nav-link <%= active_class('/leaders') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Leader</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/patners" class="nav-link <%= active_class('/patners') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Patner</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/memo_categories" class="nav-link <%= active_class('/memo_categories') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Memo Category</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/declare_categories" class="nav-link <%= active_class('/declare_categories') %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Declare Category</p>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

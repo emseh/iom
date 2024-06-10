@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :memos
-  resources :declares
-  resources :memo_categories
-  resources :declare_categories
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
@@ -11,7 +7,13 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  get 'dashboard/index'
+  get 'dashboard', to: 'dashboard#index'
 
+  resources :admins
+  resources :declare_categories
+  resources :declares
+  resources :leaders
+  resources :memos
+  resources :memo_categories
   resources :patners
 end

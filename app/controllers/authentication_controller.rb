@@ -2,6 +2,7 @@
 
 class AuthenticationController < ApplicationController
   before_action :authenticate_user!
+  layout 'adminlte'
 
   # include UserAuthentication
   # include Pundit::Authorization
