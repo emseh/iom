@@ -1,14 +1,41 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Admins</h1>
-
 <div id="admins">
-  <% @admins.each do |admin| %>
-    <%= render admin %>
-    <p>
-      <%= link_to "Show this admin", admin %>
-    </p>
-  <% end %>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Admin Details</h3>
+      <%= link_to new_admin_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="admins-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @admins.each do |admin| %>
+            <%= render admin %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New admin", new_admin_path %>
+  <!-- /.card-body -->
+<!--</div>-->
+  <%# @admins.each do |admin| %>
+    <%#= render admin %>
+<!--    <p>-->
+      <%#= link_to "Show this admin", admin %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>-->
+
+<%#= link_to "New admin", new_admin_path %>

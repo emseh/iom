@@ -11,10 +11,17 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_information
 
+  validates :password, :password_confirmation, presence: true, if: :password_required?
+  validates_associated :user_information
+
   before_save :assign_default_role
   after_create :must_have_a_role
 
   private
+
+  def password_required?
+    new_record? || password.present?
+  end
 
   def remove_existing_role(_role)
     roles.destroy_all
