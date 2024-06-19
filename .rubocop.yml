@@ -30,3 +30,6 @@ Metrics/BlockLength:
     - 'config/routes.rb'
     - 'config/environments/production.rb'
     - 'config/environments/development.rb'
+
+Style/HashSyntax:
+  Enabled: false

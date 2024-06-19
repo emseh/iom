@@ -1,3 +1,39 @@
+<!--<div id="<%#= dom_id @admin %>" class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">User Information</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>
+      <strong>Email:</strong>
+      <span class="text-muted"><%#= @admin.email %></span>
+    </p>
+    <p>
+      <strong>Full Name:</strong>
+      <span class="text-muted"><%#= @admin&.user_information&.full_name %></span>
+    </p>
+    <p>
+      <strong>Phone Number:</strong>
+      <span class="text-muted"><%#= @admin&.user_information&.phone_number %></span>
+    </p>
+  </div>
+</div>-->
+
+
+<%#= render @admin %>
+<!--
+<div>
+  <%#= link_to "Edit this admin", edit_admin_path(@admin) %> |-->
+  <%#= link_to "Back to admins", admins_path %>
+<!---->
+  <%#= button_to "Destroy this admin", @admin, method: :delete %>
+<!--</div>
+-->
+
 <p style="color: green"><%= notice %></p>
 
 <div class="card">
@@ -39,44 +75,3 @@
   <!-- /.card-body -->
 </div>
 <!-- /.card -->
-
-
-
-
-
-
-<!--<div id="<%#= dom_id @admin %>" class="card card-primary card-outline">
-  <div class="card-header">
-    <h3 class="card-title">User Information</h3>
-    <div class="card-tools">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-      </button>
-    </div>
-  </div>
-  <div class="card-body">
-    <p>
-      <strong>Email:</strong>
-      <span class="text-muted"><%#= @admin.email %></span>
-    </p>
-    <p>
-      <strong>Full Name:</strong>
-      <span class="text-muted"><%#= @admin&.user_information&.full_name %></span>
-    </p>
-    <p>
-      <strong>Phone Number:</strong>
-      <span class="text-muted"><%#= @admin&.user_information&.phone_number %></span>
-    </p>
-  </div>
-</div>-->
-
-
-<%#= render @admin %>
-<!--
-<div>
-  <%#= link_to "Edit this admin", edit_admin_path(@admin) %> |-->
-  <%#= link_to "Back to admins", admins_path %>
-<!---->
-  <%#= button_to "Destroy this admin", @admin, method: :delete %>
-<!--</div>
--->

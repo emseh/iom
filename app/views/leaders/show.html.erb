@@ -1,10 +1,53 @@
+<!--<p style="color: green"><%#= notice %></p>
+
+<%#= render @leader %>-->
+<!--
+<div>
+  <%#= link_to "Edit this leader", edit_leader_path(@leader) %> |-->
+  <%#= link_to "Back to leaders", leaders_path %>
+<!---->
+  <%#= button_to "Destroy this leader", @leader, method: :delete %>
+<!--</div>
+-->
+
 <p style="color: green"><%= notice %></p>
 
-<%= render @leader %>
-
-<div>
-  <%= link_to "Edit this leader", edit_leader_path(@leader) %> |
-  <%= link_to "Back to leaders", leaders_path %>
-
-  <%= button_to "Destroy this leader", @leader, method: :delete %>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">leader Details</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered table-striped" id="<%= dom_id(@leader) %>">
+      <tbody>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><%= @leader.email %></td>
+        </tr>
+        <tr>
+          <td><strong>Full Name</strong></td>
+          <td><%= @leader&.user_information&.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Phone Number</strong></td>
+          <td><%= @leader&.user_information&.phone_number %></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-right">
+            <%= link_to leaders_path, class: 'btn btn-secondary btn-sm' do %>
+              <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to edit_leader_path(@leader), class: 'btn btn-primary btn-sm ml-2' do %>
+              <i class="fas fa-pencil-alt"></i> Edit
+            <% end %>
+            <%= link_to leader_path(@leader), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+              <i class="fas fa-trash"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
 </div>
+<!-- /.card -->
