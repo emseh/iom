@@ -1,14 +1,45 @@
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%#= notice %></p>
 
 <h1>Leaders</h1>
 
 <div id="leaders">
-  <% @leaders.each do |leader| %>
-    <%= render leader %>
-    <p>
-      <%= link_to "Show this leader", leader %>
-    </p>
-  <% end %>
-</div>
+  <%# @leaders.each do |leader| %>-->
+    <%#= render leader %>
+<!--    <p>-->
+      <%#= link_to "Show this leader", leader %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>
 
-<%= link_to "New leader", new_leader_path %>
+<%#= link_to "New leader", new_leader_path %>-->
+
+<div id="leaders">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Leader List</h3>
+      <%= link_to new_leader_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="leaders-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @leaders.each do |leader| %>
+            <%= render leader %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @leaders %>
+      <%= page_entries_info @leaders %>
+    </div>
+  </div>
+</div>

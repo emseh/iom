@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <%= f.simple_fields_for :user_information do |u| %>
+      <%= f.simple_fields_for (@admin.user_information.present? ? :user_information : :user_information_attributes) do |u| %>
         <div class="form-group row">
           <%= u.label :full_name, class: 'col-sm-2 col-form-label' %>
           <div class="col-sm-10">

@@ -5,7 +5,7 @@ class LeadersController < AuthenticationController
 
   # GET /leaders or /leaders.json
   def index
-    @leaders = Leader.all
+    @leaders = Leader.includes(:user_information).all.page(params[:page]).per(20)
   end
 
   # GET /leaders/1 or /leaders/1.json
