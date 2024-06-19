@@ -25,20 +25,30 @@
         </div>
       </div>
 
-      <%= f.simple_fields_for (@leader.user_information.present? ? :user_information : :user_information_attributes) do |u| %>
+      <%= f.simple_fields_for (@leader.user_information.present? ? :user_information : :user_information_attributes) do |ui| %>
         <div class="form-group row">
-          <%= u.label :full_name, class: 'col-sm-2 col-form-label' %>
+          <%= ui.label :full_name, class: 'col-sm-2 col-form-label' %>
           <div class="col-sm-10">
-            <%= u.text_field :full_name, class: 'form-control', placeholder: 'Enter full name' %>
-            <%= u.error :full_name, class: 'text-danger' %>
+            <%= ui.text_field :full_name, class: 'form-control', placeholder: 'Enter full name' %>
+            <%= ui.error :full_name, class: 'text-danger' %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= u.label :phone_number, class: 'col-sm-2 col-form-label' %>
+          <%= ui.label :phone_number, class: 'col-sm-2 col-form-label' %>
           <div class="col-sm-10">
-            <%= u.number_field :phone_number, class: 'form-control', placeholder: 'Enter phone number', min: 0, step: 1 %>
-            <%= u.error :phone_number, class: 'text-danger' %>
+            <%= ui.number_field :phone_number, class: 'form-control', placeholder: 'Enter phone number', min: 0, step: 1 %>
+            <%= ui.error :phone_number, class: 'text-danger' %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= f.simple_fields_for (@leader.user_patner.present? ? :user_patner : :user_patner_attributes) do |up| %>
+        <div class="form-group row">
+          <%= up.label :patner_id, 'Select Patner', class: 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= up.collection_select :patner_id, Patner.all, :id, :name_code, { prompt: 'Choose a Partner' }, class: 'form-control' %>
+            <%= up.error :patner_id, class: 'text-danger' %>
           </div>
         </div>
       <% end %>

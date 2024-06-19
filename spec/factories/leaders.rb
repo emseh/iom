@@ -6,7 +6,8 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     before(:create) do |leader|
-      create(:user_information, user: leader, full_name: leader.email.split('@').first.split('.').map(&:capitalize).join(' '))
+      build(:user_information, user: leader, full_name: leader.email.split('@').first.split('.').map(&:capitalize).join(' '))
+      build(:user_patner, patner: Patner.all.sample, user: leader)
     end
   end
 end

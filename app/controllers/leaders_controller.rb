@@ -5,7 +5,7 @@ class LeadersController < AuthenticationController
 
   # GET /leaders or /leaders.json
   def index
-    @leaders = Leader.includes(:user_information).all.page(params[:page]).per(20)
+    @leaders = Leader.includes(:user_information, :patner).all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /leaders/1 or /leaders/1.json
@@ -66,6 +66,9 @@ class LeadersController < AuthenticationController
 
   # Only allow a list of trusted parameters through.
   def leader_params
-    params.fetch(:leader, {})
+    params.require(:leader).permit(:email, :password, :password_confirmation,
+                                   user_information_attributes: [:id, :full_name, :phone_number],
+                                   user_patner_attributes: :patner_id)
+    # params.fetch(:leader, {})
   end
 end
