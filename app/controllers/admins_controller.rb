@@ -5,7 +5,7 @@ class AdminsController < AuthenticationController
 
   # GET /admins or /admins.json
   def index
-    @admins = Admin.includes(:user_information).all.page(params[:page]).per(20)
+    @admins = Admin.includes(:user_information).all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /admins/1 or /admins/1.json

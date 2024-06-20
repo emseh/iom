@@ -11,6 +11,7 @@
     <td><%= leader.email %></td>
     <td><%= leader.user_information&.full_name %></td>
     <td><%= leader.user_information&.phone_number %></td>
+    <td><%= leader.patner&.name_code %></td>
     <td>
       <%= link_to leader_path(leader), class: 'btn btn-secondary btn-sm' do %>
         <i class="fas fa-eye"></i> Show

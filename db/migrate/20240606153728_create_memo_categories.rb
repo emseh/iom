@@ -7,5 +7,6 @@ class CreateMemoCategories < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    add_index :memo_categories, :name, unique: true
   end
 end

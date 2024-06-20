@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable # :omniauthable
 
   has_one :user_information, dependent: :destroy
+  has_one :user_patner, dependent: :destroy
+  has_one :patner, through: :user_patner
 
   accepts_nested_attributes_for :user_information
 
