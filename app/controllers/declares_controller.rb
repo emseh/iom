@@ -5,7 +5,7 @@ class DeclaresController < AuthenticationController
 
   # GET /declares or /declares.json
   def index
-    @declares = Declare.all
+    @declares = Declare.all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /declares/1 or /declares/1.json
@@ -22,6 +22,7 @@ class DeclaresController < AuthenticationController
   # POST /declares or /declares.json
   def create
     @declare = Declare.new(declare_params)
+    @declare.user_id = current_user.id
 
     respond_to do |format|
       if @declare.save

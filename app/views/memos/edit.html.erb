@@ -5,6 +5,13 @@
 <br>
 
 <div>
-  <%= link_to "Show this memo", @memo %> |
-  <%= link_to "Back to memos", memos_path %>
+  <%= link_to memos_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to memo_path(@memo), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this memo", @memo %>
+  <%#= link_to "Back to memo categories", memos_path %>
 </div>
+

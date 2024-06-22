@@ -5,6 +5,12 @@
 <br>
 
 <div>
-  <%= link_to "Show this declare", @declare %> |
-  <%= link_to "Back to declares", declares_path %>
+  <%= link_to declares_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to declare_path(@declare), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this declare", @declare %>
+  <%#= link_to "Back to memo categories", declares_path %>
 </div>

@@ -1,14 +1,46 @@
 <!--<p style="color: green"><%#= notice %></p>-->
 
-<h1>Memo categories</h1>
+<!--<h1>Memo categories</h1>
 
 <div id="memo_categories">
-  <% @memo_categories.each do |memo_category| %>
-    <%= render memo_category %>
-    <p>
-      <%= link_to "Show this memo category", memo_category %>
-    </p>
-  <% end %>
-</div>
+  <%# @memo_categories.each do |memo_category| %>-->
+    <%#= render memo_category %>
+<!--    <p>-->
+      <%#= link_to "Show this memo category", memo_category %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>
 
-<%= link_to "New memo category", new_memo_category_path %>
+<%#= link_to "New memo category", new_memo_category_path %>-->
+<!---->
+
+<div id="memo_categories">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Declare Category List</h3>
+      <%= link_to new_memo_category_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="memo_categories-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @memo_categories.each do |memo_category| %>
+            <%= render memo_category %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @memo_categories %>
+      <div class="mt-2">
+        <%= page_entries_info @memo_categories %>
+      </div>
+    </div>
+  </div>
+</div>

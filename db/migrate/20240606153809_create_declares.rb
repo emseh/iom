@@ -5,7 +5,7 @@ class CreateDeclares < ActiveRecord::Migration[7.1]
     create_table :declares do |t|
       t.references :user, null: false, foreign_key: true
       t.references :declare_category, null: false, foreign_key: true
-      t.integer :status
+      t.integer :status, default: 0
       t.text :description
 
       t.timestamps

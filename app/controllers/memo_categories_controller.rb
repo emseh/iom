@@ -5,7 +5,7 @@ class MemoCategoriesController < AuthenticationController
 
   # GET /memo_categories or /memo_categories.json
   def index
-    @memo_categories = MemoCategory.all
+    @memo_categories = MemoCategory.all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /memo_categories/1 or /memo_categories/1.json

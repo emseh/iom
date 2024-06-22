@@ -1,10 +1,59 @@
 <!--<p style="color: green"><%#= notice %></p>-->
 
-<%= render @memo %>
-
+<%#= render @memo %>
+<!--
 <div>
-  <%= link_to "Edit this memo", edit_memo_path(@memo) %> |
-  <%= link_to "Back to memos", memos_path %>
+  <%#= link_to "Edit this memo", edit_memo_path(@memo) %> |-->
+  <%#= link_to "Back to memos", memos_path %>
+<!---->
+  <%#= button_to "Destroy this memo", @memo, method: :delete %>
+<!--</div>
+-->
 
-  <%= button_to "Destroy this memo", @memo, method: :delete %>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Patner Details</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered table-striped" id="<%= dom_id(@memo) %>">
+      <tbody>
+        <tr>
+          <td><strong>Name</strong></td>
+          <td><%= @memo&.user&.user_information&.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Category</strong></td>
+          <td><%= @memo&.memo_category&.name %></td>
+        </tr>
+        <tr>
+          <td><strong>Status</strong></td>
+          <td><%= @memo&.status %></td>
+        </tr>
+        <tr>
+          <td><strong>Created At</strong></td>
+          <td><%= @memo&.created_at %></td>
+        </tr>
+        <tr>
+          <td><strong>Description</strong></td>
+          <td><%= @memo&.description %></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right">
+            <%= link_to memos_path, class: 'btn btn-secondary btn-sm' do %>
+              <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to edit_memo_path(@memo), class: 'btn btn-primary btn-sm ml-2' do %>
+              <i class="fas fa-pencil-alt"></i> Edit
+            <% end %>
+            <%= link_to memo_path(@memo), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+              <i class="fas fa-trash"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
 </div>
+<!-- /.card -->

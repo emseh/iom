@@ -1,14 +1,46 @@
 <!--<p style="color: green"><%#= notice %></p>-->
 
-<h1>Declare categories</h1>
+<!--<h1>Declare categories</h1>
 
 <div id="declare_categories">
-  <% @declare_categories.each do |declare_category| %>
-    <%= render declare_category %>
-    <p>
-      <%= link_to "Show this declare category", declare_category %>
-    </p>
-  <% end %>
-</div>
+  <%# @declare_categories.each do |declare_categoryy| %>-->
+    <%#= render declare_categoryy %>
+<!--    <p>-->
+      <%#= link_to "Show this declare category", declare_categoryy %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>
 
-<%= link_to "New declare category", new_declare_category_path %>
+<%#= link_to "New declare category", new_declare_categoryy_path %>-->
+<!---->
+
+<div id="declare_categories">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Declare Category List</h3>
+      <%= link_to new_declare_category_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="declare_categories-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @declare_categories.each do |declare_category| %>
+            <%= render declare_category %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @declare_categories %>
+      <div class="mt-2">
+        <%= page_entries_info @declare_categories %>
+      </div>
+    </div>
+  </div>
+</div>

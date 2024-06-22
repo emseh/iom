@@ -1,14 +1,46 @@
 <!--<p style="color: green"><%#= notice %></p>-->
 
-<h1>Patners</h1>
+<!--<h1>Patners</h1>
 
 <div id="patners">
-  <% @patners.each do |patner| %>
-    <%= render patner %>
-    <p>
-      <%= link_to "Show this patner", patner %>
-    </p>
-  <% end %>
-</div>
+  <%# @patners.each do |patner| %>-->
+    <%#= render patner %>
+<!--    <p>-->
+      <%#= link_to "Show this patner", patner %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>
 
-<%= link_to "New patner", new_patner_path %>
+<%#= link_to "New patner", new_patner_path %>-->
+
+<div id="patners">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Declare Category List</h3>
+      <%= link_to new_patner_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="patners-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @patners.each do |patner| %>
+            <%= render patner %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @patners %>
+      <div class="mt-2">
+        <%= page_entries_info @patners %>
+      </div>
+    </div>
+  </div>
+</div>

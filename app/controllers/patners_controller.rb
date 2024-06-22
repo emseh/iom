@@ -5,7 +5,7 @@ class PatnersController < AuthenticationController
 
   # GET /patners or /patners.json
   def index
-    @patners = Patner.all
+    @patners = Patner.all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /patners/1 or /patners/1.json

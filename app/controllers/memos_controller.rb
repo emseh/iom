@@ -5,7 +5,7 @@ class MemosController < AuthenticationController
 
   # GET /memos or /memos.json
   def index
-    @memos = Memo.all
+    @memos = Memo.all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /memos/1 or /memos/1.json
@@ -22,6 +22,8 @@ class MemosController < AuthenticationController
   # POST /memos or /memos.json
   def create
     @memo = Memo.new(memo_params)
+    @memo.user_id = current_user.id
+
 
     respond_to do |format|
       if @memo.save

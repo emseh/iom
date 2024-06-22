@@ -1,7 +1,24 @@
-<div id="<%= dom_id declare_category %>">
+<!--<div id="<%#= dom_id declare_category %>">
   <p>
     <strong>Name:</strong>
-    <%= declare_category.name %>
-  </p>
+    <%#= declare_category.name %>-->
+<!--  </p>
 
+</div>-->
+
+<div id="<%= dom_id declare_category %>">
+  <tr>
+    <td><%= declare_category.name %></td>
+    <td>
+      <%= link_to declare_category_path(declare_category), class: 'btn btn-secondary btn-sm' do %>
+        <i class="fas fa-eye"></i> Show
+      <% end %>
+      <%= link_to edit_declare_category_path(declare_category), class: 'btn btn-primary btn-sm ml-2' do %>
+        <i class="fas fa-pencil-alt"></i> Edit
+      <% end %>
+      <%= link_to declare_category_path(declare_category), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+        <i class="fas fa-trash"></i> Delete
+      <% end %>
+    </td>
+  </tr>
 </div>
