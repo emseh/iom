@@ -1,37 +1,62 @@
-<%= form_with(model: declare) do |form| %>
-  <% if declare.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(declare.errors.count, "error") %> prohibited this declare from being saved:</h2>
+<%#= form_with(model: declare) do |form| %>
+  <%# if declare.errors.any? %>
+<!--    <div style="color: red">
+      <h2><%#= pluralize(declare.errors.count, "error") %> prohibited this declare from being saved:</h2>
 
       <ul>
-        <% declare.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <%# declare.errors.each do |error| %>-->
+<!--          <li><%#= error.full_message %></li>-->
+        <%# end %>
+<!--      </ul>
     </div>
-  <% end %>
+  <%# end %>-->
+<!--
+  <div>
+    <%#= form.label :user_id, style: "display: block" %>-->
+    <%#= form.text_field :user_id %>
+<!--  </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+    <%#= form.label :declare_category_id, style: "display: block" %>-->
+    <%#= form.text_field :declare_category_id %>
+<!--  </div>
 
   <div>
-    <%= form.label :declare_category_id, style: "display: block" %>
-    <%= form.text_field :declare_category_id %>
-  </div>
+    <%#= form.label :description, style: "display: block" %>-->
+    <%#= form.text_area :description %>
+<!--  </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
-  </div>
+    <%#= form.submit %>-->
+<!--  </div>-->
+<%# end %>
+<!---->
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
+<%= simple_form_for(@declare, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div>
-    <%= form.submit %>
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group row">
+        <%= f.label :declare_category, 'Select Patner', class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.collection_select :declare_category_id, DeclareCategory.all, :id, :name, { prompt: 'Choose a Category' }, class: 'form-control' %>
+          <%= f.error :declare_category, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :description, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :description, class: 'form-control', placeholder: 'Enter Description' %>
+          <%= f.error :description, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

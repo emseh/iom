@@ -5,6 +5,12 @@
 <br>
 
 <div>
-  <%= link_to "Show this leader", @leader %> |
-  <%= link_to "Back to leaders", leaders_path %>
+  <%= link_to leaders_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to leader_path(@leader), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this leader", @leader %>
+  <%#= link_to "Back to leaders", leaders_path %>
 </div>

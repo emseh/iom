@@ -5,7 +5,7 @@ class DeclareCategoriesController < AuthenticationController
 
   # GET /declare_categories or /declare_categories.json
   def index
-    @declare_categories = DeclareCategory.all
+    @declare_categories = DeclareCategory.all.page(params[:page]).per(params[:per_page])
   end
 
   # GET /declare_categories/1 or /declare_categories/1.json

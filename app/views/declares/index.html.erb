@@ -1,14 +1,49 @@
 <!--<p style="color: green"><%#= notice %></p>-->
-
+<!--
 <h1>Declares</h1>
 
 <div id="declares">
-  <% @declares.each do |declare| %>
-    <%= render declare %>
-    <p>
-      <%= link_to "Show this declare", declare %>
-    </p>
-  <% end %>
-</div>
+  <%# @declares.each do |declare| %>-->
+    <%#= render declare %>
+<!--    <p>-->
+      <%#= link_to "Show this declare", declare %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>
 
-<%= link_to "New declare", new_declare_path %>
+<%#= link_to "New declare", new_declare_path %>-->
+
+<div id="declares">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Declare Category List</h3>
+      <%= link_to new_declare_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="declares-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @declares.each do |declare| %>
+            <%= render declare %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @declares %>
+      <div class="mt-2">
+        <%= page_entries_info @declares %>
+      </div>
+    </div>
+  </div>
+</div>

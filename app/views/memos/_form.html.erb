@@ -1,37 +1,67 @@
-<%= form_with(model: memo) do |form| %>
-  <% if memo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
+<%#= form_with(model: memo) do |form| %>
+  <%# if memo.errors.any? %>
+<!--    <div style="color: red">
+      <h2><%#= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
 
       <ul>
-        <% memo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <%# memo.errors.each do |error| %>-->
+<!--          <li><%#= error.full_message %></li>-->
+        <%# end %>
+<!--      </ul>
     </div>
-  <% end %>
+  <%# end %>-->
+<!--
+  <div>
+    <%#= form.label :user_id, style: "display: block" %>-->
+    <%#= form.text_field :user_id %>
+<!--  </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+    <%#= form.label :memo_category_id, style: "display: block" %>-->
+    <%#= form.text_field :memo_category_id %>
+<!--  </div>
 
   <div>
-    <%= form.label :memo_category_id, style: "display: block" %>
-    <%= form.text_field :memo_category_id %>
-  </div>
+    <%#= form.label :status, style: "display: block" %>-->
+    <%#= form.number_field :status %>
+<!--  </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
-  </div>
+    <%#= form.label :description, style: "display: block" %>-->
+    <%#= form.text_area :description %>
+<!--  </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
+    <%#= form.submit %>-->
+<!--  </div>-->
+<%# end %>
+<!---->
 
-  <div>
-    <%= form.submit %>
+<%= simple_form_for(@memo, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group row">
+        <%= f.label :memo_category, 'Select Patner', class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.collection_select :memo_category_id, DeclareCategory.all, :id, :name, { prompt: 'Choose a Category' }, class: 'form-control' %>
+          <%= f.error :memo_category, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :description, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :description, class: 'form-control', placeholder: 'Enter Description' %>
+          <%= f.error :description, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

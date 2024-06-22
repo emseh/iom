@@ -5,6 +5,12 @@
 <br>
 
 <div>
-  <%= link_to "Show this admin", @admin %> |
-  <%= link_to "Back to admins", admins_path %>
+  <%= link_to admins_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to admins_path(@admin), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this admin", @admin %>
+  <%#= link_to "Back to admins", admins_path %>
 </div>

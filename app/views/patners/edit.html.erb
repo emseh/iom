@@ -5,6 +5,12 @@
 <br>
 
 <div>
-  <%= link_to "Show this patner", @patner %> |
-  <%= link_to "Back to patners", patners_path %>
+  <%= link_to patners_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to patner_path(@patner), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this patner", @patner %>
+  <%#= link_to "Back to memo categories", patners_path %>
 </div>
