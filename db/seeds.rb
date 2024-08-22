@@ -1,30 +1,41 @@
 # db/seeds.rb
 
 require 'faker'
+require 'csv'
+
+PATNERS = [
+  { name: 'PT Media Nusantara Citra Tbk', code: 'MNC' },
+  { name: 'PT Link Net Tbk', code: 'FM' },
+  { name: 'PT Perusahaan Listrik Negara', code: 'ICONNET' }
+].freeze
+
+PATNERS.each do |patner|
+  Patner.find_or_create_by!(name: patner[:name], code: patner[:code])
+end
+
+MEMO_CATEGORIES = ['Pengadaan Alat Kerja', 'Pengadaan Bahan', 'Biaya Transportasi'].freeze
+
+MEMO_CATEGORIES.each do |memo_category|
+  MemoCategory.find_or_create_by!(name: memo_category)
+end
+
+DECLARE_CATEGORIES = ['Biaya Rumah Sakit', 'Biaya Transportasi', 'Biaya Parkir'].freeze
+
+DECLARE_CATEGORIES.each do |declare_category|
+  DeclareCategory.find_or_create_by!(name: declare_category)
+end
+
+payout_channels = Rails.root.join('db/seeds/payout_channels.csv')
+CSV.foreach(payout_channels, headers: true) do |row|
+  PayoutChannel.find_or_create_by!(
+    name: row['bank_name'],
+    code: row['channel_code'],
+    payout_type: row['channel_type'],
+    active: true
+  )
+end
 
 if Rails.env.development?
-  PATNERS = [
-    { name: 'PT Media Nusantara Citra Tbk', code: 'MNC' },
-    { name: 'PT Link Net Tbk', code: 'FM' },
-    { name: 'PT Perusahaan Listrik Negara', code: 'ICONNET' }
-  ].freeze
-
-  PATNERS.each do |patner|
-    Patner.find_or_create_by!(name: patner[:name], code: patner[:code])
-  end
-
-  MEMO_CATEGORIES = ['Pengadaan Alat Kerja', 'Pengadaan Bahan', 'Biaya Transportasi'].freeze
-
-  MEMO_CATEGORIES.each do |memo_category|
-    MemoCategory.find_or_create_by!(name: memo_category)
-  end
-
-  DECLARE_CATEGORIES = ['Biaya Rumah Sakit', 'Biaya Transportasi', 'Biaya Parkir'].freeze
-
-  DECLARE_CATEGORIES.each do |declare_category|
-    DeclareCategory.find_or_create_by!(name: declare_category)
-  end
-
   Admin.find_or_create_by!(email: 'admin@example.com') do |admin|
     admin.password = 'password'
     admin.password_confirmation = 'password'
@@ -40,3 +51,5 @@ if Rails.env.development?
 
   User.find_each(&:confirm)
 end
+
+Rails.logger.debug 'Seeds created successfully!'

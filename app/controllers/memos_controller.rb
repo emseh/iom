@@ -24,7 +24,6 @@ class MemosController < AuthenticationController
     @memo = Memo.new(memo_params)
     @memo.user_id = current_user.id
 
-
     respond_to do |format|
       if @memo.save
         format.html { redirect_to memo_url(@memo), notice: 'Memo was successfully created.' }
@@ -68,6 +67,6 @@ class MemosController < AuthenticationController
 
   # Only allow a list of trusted parameters through.
   def memo_params
-    params.require(:memo).permit(:user_id, :memo_category_id, :status, :description)
+    params.require(:memo).permit(:user_id, :memo_category_id, :status, :description, :amount, :memo_proof)
   end
 end

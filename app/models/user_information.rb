@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserInformation < ApplicationRecord
   belongs_to :user
 

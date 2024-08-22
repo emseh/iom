@@ -27,8 +27,9 @@
     <td><%= declare&.user&.user_information&.full_name %></td>
     <td><%= declare&.declare_category&.name %></td>
     <td><%= declare&.status %></td>
-    <td><%= declare&.description %></td>
-    <td><%= declare&.created_at %></td>
+    <td><%= format_to_indonesian_currency(declare&.amount) %></td>
+    <td><%= declare&.declare_proof.present? ? 'Uploaded' : 'Not Uploaded' %></td>
+    <td><%= formatted_date(declare&.created_at) %></td>
     <td>
       <%= link_to declare_path(declare), class: 'btn btn-secondary btn-sm' do %>
         <i class="fas fa-eye"></i> Show

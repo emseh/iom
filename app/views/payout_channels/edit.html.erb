@@ -1,0 +1,16 @@
+<h1>Editing payout_channel</h1>
+
+<%= render "form", payout_channel: @payout_channel %>
+
+<br>
+
+<div>
+  <%= link_to payout_channels_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to payout_channel_path(@payout_channel), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this payout_channel", @payout_channel %>
+  <%#= link_to "Back to memo categories", payout_channels_path %>
+</div>

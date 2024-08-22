@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Bank Central Asia",
+    "code": "BCA",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Negara Indonesia",
+    "code": "BNI",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Mandiri",
+    "code": "MANDIRI",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Permata",
+    "code": "PERMATA",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Sahabat Sampoerna",
+    "code": "SAHABAT_SAMPOERNA",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Rakyat Indonesia",
+    "code": "BRI",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Neo Commerce",
+    "code": "BNC",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank CIMB Niaga",
+    "code": "CIMB",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Syariah Indonesia",
+    "code": "BSI",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "Bank Jabar Banten",
+    "code": "BJB",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "The Development Bank of Singapore",
+    "code": "DBS",
+    "country": "ID",
+    "currency": "IDR",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  },
+  {
+    "name": "The Development Bank of Singapore",
+    "code": "DBS",
+    "country": "ID",
+    "currency": "USD",
+    "is_activated": false,
+    "fee": 4000,
+    "vat": 11
+  }
+]

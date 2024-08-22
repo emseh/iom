@@ -1,0 +1,16 @@
+<h1>Editing Bank Accounts</h1>
+
+<%= render "bank_account_form", bank_account: @bank_account, url: update_bank_account_profile_path(@bank_account) %>
+
+<br>
+
+<div>
+  <%= link_to profiles_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+  <%= link_to show_bank_account_profile_path(@bank_account), class: 'btn btn-secondary btn-sm' do %>
+    <i class="fas fa-chevron-left"></i> Back to detail
+  <% end %>
+  <%#= link_to "Show this bank_account", @bank_account %>
+  <%#= link_to "Back to bank_accounts", bank_accounts_path %>
+</div>

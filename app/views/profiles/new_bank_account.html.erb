@@ -1,0 +1,11 @@
+<h1>New Bank Account</h1>
+
+<%= render "bank_account_form", bank_account: @bank_account, url: create_bank_account_profiles_path %>
+
+<br>
+
+<div>
+  <%= link_to profiles_path, class: 'btn btn-primary btn-sm' do %>
+    <i class="fas fa-rectangle-list"></i> Back to list
+  <% end %>
+</div>

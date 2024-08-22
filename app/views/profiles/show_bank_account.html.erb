@@ -1,0 +1,55 @@
+<!--<p style="color: green"><%#= notice %></p>
+
+<%#= render @bank_account %>-->
+<!--
+<div>
+  <%#= link_to "Edit this bank account", edit_bank_account_path(@bank_account) %> |-->
+  <%#= link_to "Back to bank accounts", bank_accounts_path %>
+<!---->
+  <%#= button_to "Destroy this bank account", @bank_account, method: :delete %>
+<!--</div>
+-->
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Bank Account Details</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered table-striped" id="<%= dom_id(@bank_account) %>">
+      <tbody>
+        <tr>
+          <td><strong>Name</strong></td>
+          <td><%= @bank_account&.user&.user_information&.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Payout Channel Name</strong></td>
+          <td><%= @bank_account&.payout_channel&.name %></td>
+        </tr>
+        <tr>
+          <td><strong>Account Name</strong></td>
+          <td><%= @bank_account&.name %></td>
+        </tr>
+        <tr>
+          <td><strong>Account Number</strong></td>
+          <td><%= @bank_account&.number %></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-right">
+            <%= link_to profiles_path, class: 'btn btn-secondary btn-sm' do %>
+              <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to edit_bank_account_profile_path(@bank_account), class: 'btn btn-primary btn-sm ml-2' do %>
+              <i class="fas fa-pencil-alt"></i> Edit
+            <% end %>
+            <%= link_to destroy_bank_account_profile_path(@bank_account), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+              <i class="fas fa-trash"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->

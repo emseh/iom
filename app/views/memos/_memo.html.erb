@@ -27,8 +27,9 @@
     <td><%= memo&.user&.user_information&.full_name %></td>
     <td><%= memo&.memo_category&.name %></td>
     <td><%= memo&.status %></td>
-    <td><%= memo&.description %></td>
-    <td><%= memo&.created_at %></td>
+    <td><%= format_to_indonesian_currency(memo&.amount) %></td>
+    <td><%= memo&.memo_proof.present? ? 'Uploaded' : 'Not Uploaded' %></td>
+    <td><%= formatted_date(memo&.created_at) %></td>
     <td>
       <%= link_to memo_path(memo), class: 'btn btn-secondary btn-sm' do %>
         <i class="fas fa-eye"></i> Show

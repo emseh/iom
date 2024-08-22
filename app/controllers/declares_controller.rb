@@ -67,6 +67,6 @@ class DeclaresController < AuthenticationController
 
   # Only allow a list of trusted parameters through.
   def declare_params
-    params.require(:declare).permit(:user_id, :declare_category_id, :status, :description)
+    params.require(:declare).permit(:user_id, :declare_category_id, :status, :description, :amount, :declare_proof)
   end
 end
