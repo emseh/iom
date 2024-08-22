@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DeclaresController < AuthenticationController
-  before_action :set_declare, only: %i[show edit update destroy]
+  before_action :set_declare, only: %i[show edit update destroy approve]
 
   # GET /declares or /declares.json
   def index
@@ -55,6 +55,18 @@ class DeclaresController < AuthenticationController
     respond_to do |format|
       format.html { redirect_to declares_url, notice: 'Declare was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def approve
+    respond_to do |format|
+      if @declare.approved!
+        format.html { redirect_to approve_declare_url(@declare), notice: 'Declare was successfully approved.' }
+        format.json { render :show, status: :ok, location: @declare }
+      else
+        format.html { render :show, status: :unprocessable_entity }
+        format.json { render json: @declare.errors, status: :unprocessable_entity }
+      end
     end
   end
 

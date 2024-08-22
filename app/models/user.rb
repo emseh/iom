@@ -21,6 +21,14 @@ class User < ApplicationRecord
   before_save :assign_default_role
   after_create :must_have_a_role
 
+  def admin?
+    has_role?('admin')
+  end
+
+  def leader?
+    has_role?('leader')
+  end
+
   private
 
   def password_required?
