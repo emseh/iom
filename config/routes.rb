@@ -12,9 +12,17 @@ Rails.application.routes.draw do
 
   resources :admins
   resources :declare_categories
-  resources :declares
+  resources :declares do
+    member do
+      post :approve
+    end
+  end
+  resources :memos do
+    member do
+      post :approve
+    end
+  end
   resources :leaders
-  resources :memos
   resources :memo_categories
   resources :patners
   resources :payout_channels, except: %i[create destroy]
