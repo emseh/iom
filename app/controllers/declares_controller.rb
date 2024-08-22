@@ -5,7 +5,7 @@ class DeclaresController < AuthenticationController
 
   # GET /declares or /declares.json
   def index
-    @declares = Declare.all.page(params[:page]).per(params[:per_page])
+    @declares = current_user.admin? ? Declare.all.page(params[:page]).per(params[:per_page]) : current_user.declares.page(params[:page]).per(params[:per_page])
   end
 
   # GET /declares/1 or /declares/1.json
@@ -79,6 +79,7 @@ class DeclaresController < AuthenticationController
 
   # Only allow a list of trusted parameters through.
   def declare_params
-    params.require(:declare).permit(:user_id, :declare_category_id, :status, :description, :amount, :declare_proof)
+    params.require(:declare).permit(:user_id, :declare_category_id, :status, :description, :amount, :declare_proof,
+                                    :bank_account_id)
   end
 end

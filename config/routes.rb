@@ -38,4 +38,12 @@ Rails.application.routes.draw do
       delete :destroy_bank_account
     end
   end
+
+  namespace :xendit, defaults: { format: :json } do
+    resources :disbursements do
+      collection do
+        post :callback
+      end
+    end
+  end
 end

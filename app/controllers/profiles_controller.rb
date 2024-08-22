@@ -65,11 +65,14 @@ class ProfilesController < AuthenticationController
   end
 
   def destroy_bank_account
-    @bank_account.destroy!
-
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'Bank account was successfully destroyed.' }
-      format.json { head :no_content }
+      if @bank_account.destroy
+        format.html { redirect_to profiles_url, notice: 'Bank account was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to profiles_url, alert: @bank_account.errors.full_messages.to_sentence }
+        format.json { render json: @bank_account.errors, status: :unprocessable_entity }
+      end
     end
   end
 

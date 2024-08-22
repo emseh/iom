@@ -36,3 +36,6 @@ Style/HashSyntax:
 
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false

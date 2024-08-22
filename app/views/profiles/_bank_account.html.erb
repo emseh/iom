@@ -32,7 +32,8 @@
     <td><%= bank_account&.payout_channel&.name %></td>
     <td><%= bank_account&.name %></td>
     <td><%= bank_account&.number %></td>
-    <td><%= bank_account&.created_at %></td>
+    <td><%= formatted_date(bank_account&.created_at) %></td>
+    <td><%= formatted_date(bank_account&.updated_at) %></td>
     <td>
       <%= link_to show_bank_account_profile_path(bank_account), class: 'btn btn-secondary btn-sm' do %>
         <i class="fas fa-eye"></i> Show
