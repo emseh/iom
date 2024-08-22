@@ -1,0 +1,135 @@
+channel_code,channel_type,bank_name
+ACEH,bank,Bank Pembangunan Daerah Aceh
+ACEH_UUS,bank,Bank Pembangunan Daerah Aceh Syariah (UUS)
+AGRONIAGA,bank,Bank Raya Indonesia (formerly called Bank BRI Agroniaga)
+ALADIN,bank,Bank Aladin Syariah (formerly Bank Maybank Syariah Indonesia)
+ALLO,bank,Allo Bank Indonesia (formerly Bank Harda Internasional)
+AMAR,bank,Bank Amar Indonesia (formerly called Anglomas International Bank)
+ANZ,bank,Bank ANZ Indonesia
+ARTHA,bank,Bank Artha Graha International
+BALI,bank,Bank Pembangunan Daerah Bali
+BAML,bank,Bank of America Merill-Lynch
+BANTEN,bank,Bank Pembangunan Daerah Banten (formerly called Bank Pundi Indonesia)
+BCA,bank,Bank Central Asia (BCA)
+BCA_DIGITAL,bank,Bank Central Asia Digital (BluBCA)
+BCA_SYR,bank,Bank Central Asia (BCA) Syariah
+BENGKULU,bank,Bank Pembangunan Daerah Bengkulu
+BISNIS_INTERNASIONAL,bank,Bank Bisnis Internasional
+BJB,bank,Bank BJB
+BJB_SYR,bank,Bank BJB Syariah
+BNC,bank,Bank Neo Commerce (formerly Bank Yudha Bhakti)
+BNI,bank,Bank Negara Indonesia (BNI)
+BNP_PARIBAS,bank,Bank BNP Paribas
+BOC,bank,Bank of China (BOC)
+BRI,bank,Bank Rakyat Indonesia (BRI)
+BSI,bank,Bank Syariah Indonesia (BSI)
+BTN,bank,Bank Tabungan Negara (BTN)
+BTN_UUS,bank,Bank Tabungan Negara Syariah (BTN UUS)
+BTPN_SYARIAH,bank,BTPN Syariah (formerly called BTPN UUS and Bank Sahabat Purba Danarta)
+BUKOPIN,bank,Bank Bukopin
+BUKOPIN_SYR,bank,Bank Syariah Bukopin
+BUMI_ARTA,bank,Bank Bumi Arta
+CAPITAL,bank,Bank Capital Indonesia
+CCB,bank,China Construction Bank Indonesia (formerly called Bank Antar Daerah and Bank Windu Kentjana International)
+CHINATRUST,bank,Bank Chinatrust Indonesia
+CIMB,bank,Bank CIMB Niaga
+CIMB_UUS,bank,Bank CIMB Niaga Syariah (UUS)
+CITIBANK,bank,Citibank
+COMMONWEALTH,bank,Bank Commonwealth
+DAERAH_ISTIMEWA,bank,Bank Pembangunan Daerah Daerah Istimewa Yogyakarta (DIY)
+DAERAH_ISTIMEWA_UUS,bank,Bank Pembangunan Daerah Daerah Istimewa Yogyakarta Syariah (DIY UUS)
+DANAMON,bank,Bank Danamon
+DANAMON_UUS,bank,Bank Danamon Syariah (UUS)
+DBS,bank,Bank DBS Indonesia
+DEUTSCHE,bank,Deutsche Bank
+DINAR_INDONESIA,bank,Bank Dinar Indonesia
+DKI,bank,Bank DKI
+DKI_UUS,bank,Bank DKI Syariah (UUS)
+FAMA,bank,Bank Fama International
+GANESHA,bank,Bank Ganesha
+HANA,bank,Bank Hana
+HSBC,bank,HSBC Indonesia (formerly called Bank Ekonomi Raharja)
+HSBC_UUS,bank,Hongkong and Shanghai Bank Corporation Syariah (HSBC UUS)
+IBK,bank,Bank IBK Indonesia (formerly Bank Agris)
+ICBC,bank,Bank ICBC Indonesia
+INA_PERDANA,bank,Bank Ina Perdania
+INDEX_SELINDO,bank,Bank Index Selindo
+INDIA,bank,Bank of India Indonesia
+JAGO,bank,Bank Jago (formerly Bank Artos Indonesia)
+JAMBI,bank,Bank Pembangunan Daerah Jambi
+JAMBI_UUS,bank,Bank Pembangunan Daerah Jambi Syariah (UUS)
+JASA_JAKARTA,bank,Bank Jasa Jakarta
+JAWA_TENGAH,bank,Bank Pembangunan Daerah Jawa Tengah
+JAWA_TENGAH_UUS,bank,Bank Pembangunan Daerah Jawa Tengah Syariah (UUS)
+JAWA_TIMUR,bank,Bank Pembangunan Daerah Jawa Timur
+JAWA_TIMUR_UUS,bank,Bank Pembangunan Daerah Jawa Timur Syariah (UUS)
+JPMORGAN,bank,JP Morgan Chase Bank
+JTRUST,bank,Bank JTrust Indonesia (formerly called Bank Mutiara)
+KALIMANTAN_BARAT,bank,Bank Pembangunan Daerah Kalimantan Barat
+KALIMANTAN_BARAT_UUS,bank,Bank Pembangunan Daerah Kalimantan Barat Syariah (UUS)
+KALIMANTAN_SELATAN,bank,Bank Pembangunan Daerah Kalimantan Selatan
+KALIMANTAN_SELATAN_UUS,bank,Bank Pembangunan Daerah Kalimantan Selatan Syariah (UUS)
+KALIMANTAN_TENGAH,bank,Bank Pembangunan Daerah Kalimantan Tengah
+KALIMANTAN_TIMUR,bank,Bank Pembangunan Daerah Kalimantan Timur
+KALIMANTAN_TIMUR_UUS,bank,Bank Pembangunan Daerah Kalimantan Timur Syariah (UUS)
+LAMPUNG,bank,Bank Pembangunan Daerah Lampung
+MALUKU,bank,Bank Pembangunan Daerah Maluku
+MANDIRI,bank,Bank Mandiri
+MANDIRI_TASPEN,bank,Mandiri Taspen Pos (formerly called Bank Sinar Harapan Bali)
+MASPION,bank,Bank Maspion Indonesia
+MAYAPADA,bank,Bank Mayapada International
+MAYBANK,bank,Bank Maybank
+MAYBANK_SYR,bank,Bank Maybank Syariah Indonesia
+MAYORA,bank,Bank Mayora
+MEGA,bank,Bank Mega
+MEGA_SYR,bank,Bank Syariah Mega
+MESTIKA_DHARMA,bank,Bank Mestika Dharma
+MIZUHO,bank,Bank Mizuho Indonesia
+MNC_INTERNASIONAL,bank,Bank MNC Internasional
+MUAMALAT,bank,Bank Muamalat Indonesia
+MULTI_ARTA_SENTOSA,bank,Bank Multi Arta Sentosa
+NATIONALNOBU,bank,Bank Nationalnobu
+NUSA_TENGGARA_BARAT,bank,Bank Pembangunan Daerah Nusa Tenggara Barat
+NUSA_TENGGARA_TIMUR,bank,Bank Pembangunan Daerah Nusa Tenggara Timur
+OCBC,bank,Bank OCBC NISP
+OCBC_UUS,bank,Bank OCBC NISP Syariah (UUS)
+OKE,bank,Bank Oke Indonesia (formerly called Bank Andara)
+PANIN,bank,Bank Panin
+PANIN_SYR,bank,Bank Panin Syariah
+PAPUA,bank,Bank Pembangunan Daerah Papua
+PERMATA,bank,Bank Permata
+PERMATA_UUS,bank,Bank Permata Syariah (UUS)
+PRIMA_MASTER,bank,Prima Master Bank
+QNB_INDONESIA,bank,Bank QNB Indonesia (formerly called Bank QNB Kesawan)
+RABOBANK,bank,Bank Rabobank International Indonesia
+RESONA,bank,Bank Resona Perdania
+RIAU_DAN_KEPRI,bank,Bank Pembangunan Daerah Riau Dan Kepri
+SAHABAT_SAMPOERNA,bank,Bank Sahabat Sampoerna
+SBI_INDONESIA,bank,Bank SBI Indonesia
+SEABANK,bank,Bank Seabank Indonesia (formerly Bank Kesejahteraan Ekonomi)
+SHINHAN,bank,Bank Shinhan Indonesia (formerly called Bank Metro Express)
+SINARMAS,bank,Bank Sinarmas
+SINARMAS_UUS,bank,Bank Sinarmas Syariah (UUS)
+STANDARD_CHARTERED,bank,Standard Charted Bank
+SULAWESI,bank,Bank Pembangunan Daerah Sulawesi Tengah
+SULAWESI_TENGGARA,bank,Bank Pembangunan Daerah Sulawesi Tenggara
+SULSELBAR,bank,Bank Pembangunan Daerah Sulselbar
+SULSELBAR_UUS,bank,Bank Pembangunan Daerah Sulselbar Syariah (UUS)
+SULUT,bank,Bank Pembangunan Daerah Sulut
+SUMATERA_BARAT,bank,Bank Pembangunan Daerah Sumatera Barat
+SUMATERA_BARAT_UUS,bank,Bank Pembangunan Daerah Sumatera Barat Syariah (UUS)
+SUMSEL_DAN_BABEL,bank,Bank Pembangunan Daerah Sumsel Dan Babel
+SUMSEL_DAN_BABEL_UUS,bank,Bank Pembangunan Daerah Sumsel Dan Babel Syariah (UUS)
+SUMUT,bank,Bank Pembangunan Daerah Sumut
+SUMUT_UUS,bank,Bank Pembangunan Daerah Sumut Syariah (UUS)
+TABUNGAN_PENSIUNAN_NASIONAL,bank,Bank Tabungan Pensiunan Nasional (BTPN)
+TOKYO,bank,Bank of Tokyo Mitsubishi UFJ (MUFJ)
+UOB,bank,Bank UOB Indonesia
+VICTORIA_INTERNASIONAL,bank,Bank Victoria Internasional
+VICTORIA_SYR,bank,Bank Victoria Syariah
+WOORI,bank,Bank Woori Indonesia
+DANA,ewallet,DANA
+GOPAY,ewallet,GoPay
+LINKAJA,ewallet,LinkAja
+OVO,ewallet,OVO
+SHOPEEPAY,ewallet,ShopeePay

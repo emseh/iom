@@ -33,3 +33,6 @@ Metrics/BlockLength:
 
 Style/HashSyntax:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false

@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Profile Details</h3>
+  </div>
+  <div class="card-body">
+    <table class="table table-bordered table-striped" id="<%= dom_id(@profile) %>">
+      <tbody>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><%= @profile.email %></td>
+        </tr>
+        <tr>
+          <td><strong>Full Name</strong></td>
+          <td><%= @profile&.user_information&.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Phone Number</strong></td>
+          <td><%= @profile&.user_information&.phone_number %></td>
+        </tr>
+        <% if @profile.has_role?(:leader) %>
+          <tr>
+            <td><strong>Patner</strong></td>
+            <td><%= @profile&.patner&.name_code %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="2" class="text-right">
+            <%= link_to new_profile_path(@profile), class: 'btn btn-primary btn-sm ml-2' do %>
+              <i class="fas fa-pencil-alt"></i> Edit
+            <% end %>
+            <%#= link_to profile_path, class: 'btn btn-secondary btn-sm' do %>
+<!--              <i class="fa fa-chevron-left"></i> Back-->
+            <%# end %>
+            <%#= link_to edit_user_password_path(@profile), class: 'btn btn-black btn-sm ml-2' do %>
+<!--              <i class="fas fa-key"></i> Change Password-->
+            <%# end %>
+            <%#= link_to profile_path(@profile), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+<!--              <i class="fas fa-trash"></i> Delete-->
+            <%# end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="bank_accounts">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Bank List</h3>
+      <%= link_to new_bank_account_profiles_path, class: 'btn btn-success btn-sm float-right' do %>
+        <i class="fa fa-plus-square"></i> New
+      <% end %>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="user_banks-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Patner</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bank_accounts.each do |bank_account| %>
+            <%= render partial: 'bank_account', object: bank_account %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @bank_accounts %>
+      <div class="mt-2">
+        <%= page_entries_info @bank_accounts %>
+      </div>
+    </div>
+  </div>
+</div>

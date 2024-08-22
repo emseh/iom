@@ -3,7 +3,7 @@
 class CreateMemoCategories < ActiveRecord::Migration[7.1]
   def change
     create_table :memo_categories do |t|
-      t.string :name
+      t.string :name, null: false
 
       t.timestamps
     end

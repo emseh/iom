@@ -22,6 +22,11 @@
 <!--  </div>
 
   <div>
+    <%#= form.label :status, style: "display: block" %>-->
+    <%#= form.number_field :status %>
+<!--  </div>
+
+  <div>
     <%#= form.label :description, style: "display: block" %>-->
     <%#= form.text_area :description %>
 <!--  </div>
@@ -39,19 +44,34 @@
   <div class="card">
     <div class="card-body">
       <div class="form-group row">
-        <%= f.label :declare_category, 'Select Patner', class: 'col-sm-2 col-form-label' %>
+        <%= f.label :declare_category, 'Select Category', class: 'col-sm-2 col-form-label' %>
         <div class="col-sm-10">
-          <%= f.collection_select :declare_category_id, DeclareCategory.all, :id, :name, { prompt: 'Choose a Category' }, class: 'form-control' %>
+          <%= f.collection_select :declare_category_id, MemoCategory.all, :id, :name, { prompt: 'Choose a Category' }, class: 'form-control' %>
           <%= f.error :declare_category, class: 'text-danger' %>
         </div>
       </div>
       <div class="form-group row">
         <%= f.label :description, class: 'col-sm-2 col-form-label' %>
         <div class="col-sm-10">
-          <%= f.text_field :description, class: 'form-control', placeholder: 'Enter Description' %>
+          <%= f.rich_text_area :description, class: 'form-control', placeholder: 'Enter Description' %>
           <%= f.error :description, class: 'text-danger' %>
         </div>
       </div>
+      <div class="form-group row">
+        <%= f.label :amount, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.number_field :amount, class: 'form-control', placeholder: 'Enter Amount', value: @declare.amount.nil? ? params.dig(:declare, :amount) || 0 : @declare.amount.to_i %>
+          <%= f.error :amount, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :declare_proof, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.input :declare_proof, as: :file, class: 'form-control', label: false %>
+          <%= f.error :declare_proof, class: 'text-danger' %>
+        </div>
+      </div>
+
       <div class="form-group row">
         <div class="col-sm-10 offset-sm-2">
           <%= f.button :submit, class: 'btn btn-primary' %>

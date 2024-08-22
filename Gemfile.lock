@@ -421,6 +421,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.4)
   faker (~> 3.4)
   faraday (~> 2.9)
+  image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
   kaminari (~> 1.2)

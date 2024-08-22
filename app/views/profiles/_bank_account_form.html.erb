@@ -1,0 +1,57 @@
+<!---->
+<%#= simple_form_for(@bank_account) do |f| %>
+  <%#= f.error_notification %>
+  <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<!--
+  <div class="form-inputs">
+    <%#= f.association :user %>-->
+    <%#= f.association :payout_channel %>
+    <%#= f.input :name %>
+    <%#= f.input :number %>
+    <%#= f.input :active %>
+<!--  </div>
+
+  <div class="form-actions">
+    <%#= f.button :submit %>-->
+<!--  </div>-->
+<%# end %>
+<!---->
+
+<%= simple_form_for(bank_account, url: url, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group row">
+        <%= f.label :payout_channel_id, 'Select Payout Channel', class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.collection_select :payout_channel_id, PayoutChannel.all, :id, :name, { prompt: 'Choose a Payout Channel' }, class: 'form-control' %>
+          <%= f.error :payout_channel_id, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :name, 'Account Name', class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.email_field :name, class: 'form-control', placeholder: 'Enter account name' %>
+          <%= f.error :name, class: 'text-danger' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :number, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.number_field :number, class: 'form-control', placeholder: 'Enter account number', min: 0, step: 1 %>
+          <%= f.error :number, class: 'text-danger' %>
+        </div>
+      </div>
+
+      <br><hr><br>
+
+      <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

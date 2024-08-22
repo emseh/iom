@@ -32,11 +32,25 @@
         </tr>
         <tr>
           <td><strong>Created At</strong></td>
-          <td><%= @memo&.created_at %></td>
+          <td><%= formatted_date(@memo&.created_at) %></td>
         </tr>
         <tr>
           <td><strong>Description</strong></td>
           <td><%= @memo&.description %></td>
+        </tr>
+        <tr>
+          <td><strong>Amount</strong></td>
+          <td><%= format_to_indonesian_currency(@memo&.amount) %></td>
+        </tr>
+        <tr>
+          <td><strong>Proof</strong></td>
+          <td>
+            <% if @memo.memo_proof? %>
+              <%= image_tag @memo.memo_proof.url, alt: 'Proof Image', size: 512 %>
+            <% else %>
+              No proof uploaded
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td colspan="3" class="text-right">

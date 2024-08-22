@@ -32,11 +32,21 @@
         </tr>
         <tr>
           <td><strong>Created At</strong></td>
-          <td><%= @declare&.created_at %></td>
+          <td><%= formatted_date(@declare&.created_at) %></td>
         </tr>
         <tr>
           <td><strong>Description</strong></td>
           <td><%= @declare&.description %></td>
+        </tr>
+        <tr>
+          <td><strong>Proof</strong></td>
+          <td>
+            <% if @declare.declare_proof? %>
+              <%= image_tag @declare.declare_proof.url, alt: 'Proof Image', size: 512 %>
+            <% else %>
+              No proof uploaded
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td colspan="3" class="text-right">
