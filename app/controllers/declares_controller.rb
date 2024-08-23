@@ -5,7 +5,9 @@ class DeclaresController < AuthenticationController
 
   # GET /declares or /declares.json
   def index
-    @declares = current_user.admin? ? Declare.all.page(params[:page]).per(params[:per_page]) : current_user.declares.page(params[:page]).per(params[:per_page])
+    declares_scope = Declare.includes([user: [:user_information, :patner]], :declare_category, :bank_account, :payout_channel)
+    @declares = current_user.admin? ? declares_scope : declares_scope.where(user: current_user)
+    @declares = @declares.page(params[:page]).per(params[:per_page])
   end
 
   # GET /declares/1 or /declares/1.json
@@ -60,11 +62,11 @@ class DeclaresController < AuthenticationController
 
   def approve
     respond_to do |format|
-      if @declare.approved!
-        format.html { redirect_to approve_declare_url(@declare), notice: 'Declare was successfully approved.' }
+      if @declare.update(status: :approved)
+        format.html { redirect_to declare_url(@declare), notice: 'Declare was successfully approved.' }
         format.json { render :show, status: :ok, location: @declare }
       else
-        format.html { render :show, status: :unprocessable_entity }
+        format.html { redirect_to declare_url(@declare), alert: @declare.errors.full_messages.to_sentence }
         format.json { render json: @declare.errors, status: :unprocessable_entity }
       end
     end

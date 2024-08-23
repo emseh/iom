@@ -5,7 +5,9 @@ class MemosController < AuthenticationController
 
   # GET /memos or /memos.json
   def index
-    @memos = current_user.admin? ? Memo.all.page(params[:page]).per(params[:per_page]) : current_user.memos.page(params[:page]).per(params[:per_page])
+    memos_scope = Memo.includes([user: [:user_information, :patner]], :memo_category, :bank_account, :payout_channel)
+    @memos = current_user.admin? ? memos_scope : memos_scope.where(user: current_user)
+    @memos = @memos.page(params[:page]).per(params[:per_page])
   end
 
   # GET /memos/1 or /memos/1.json
@@ -60,11 +62,11 @@ class MemosController < AuthenticationController
 
   def approve
     respond_to do |format|
-      if @memo.approved!
-        format.html { redirect_to approve_memo_url(@memo), notice: 'Memo was successfully approved.' }
+      if @memo.update(status: :approved)
+        format.html { redirect_to memo_url(@memo), notice: 'Memo was successfully approved.' }
         format.json { render :show, status: :ok, location: @memo }
       else
-        format.html { render :show, status: :unprocessable_entity }
+        format.html { redirect_to memo_url(@memo), alert: @memo.errors.full_messages.to_sentence }
         format.json { render json: @memo.errors, status: :unprocessable_entity }
       end
     end

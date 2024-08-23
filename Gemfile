@@ -77,6 +77,10 @@ group :development do
   # gem "spring"
   gem 'better_errors', '~> 2.10'
   gem 'binding_of_caller', '~> 1.0'
+  gem 'erd', '~> 0.8.2'
+  gem 'railroady', '~> 1.6'
+  gem 'rails_db', '~> 2.4'
+  gem 'rails-erd', '~> 1.7'
 end
 
 group :test do
