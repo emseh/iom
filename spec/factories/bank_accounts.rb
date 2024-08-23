@@ -6,6 +6,5 @@ FactoryBot.define do
     payout_channel { nil }
     name { 'MyString' }
     number { 'MyString' }
-    active { false }
   end
 end

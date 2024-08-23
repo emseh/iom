@@ -47,6 +47,8 @@ if Rails.env.development?
     leader.password_confirmation = 'password'
     leader.build_user_information(full_name: 'Leader Example', phone_number: "082#{Faker::Number.number(digits: 9)}")
     leader.build_user_patner(patner_id: Patner.ids.sample)
+    leader.bank_accounts.build(name: leader.user_information.full_name, number: '4372719111',
+                               payout_channel_id: PayoutChannel.find_by(code: 'BCA').id)
   end
 
   User.find_each(&:confirm)

@@ -7,6 +7,9 @@ class Declare < ApplicationRecord
 
   belongs_to :user
   belongs_to :declare_category
+  belongs_to :bank_account
+
+  has_one :payout_channel, through: :bank_account
 
   enum status: { submitted: 0, approved: 1, paid: 2, finished: 3 }
 

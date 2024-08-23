@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_one :user_patner, dependent: :destroy
   has_one :patner, through: :user_patner
 
+  has_many :memos, dependent: :restrict_with_error
+  has_many :declares, dependent: :restrict_with_error
   has_many :bank_accounts, dependent: :destroy
 
   accepts_nested_attributes_for :user_information

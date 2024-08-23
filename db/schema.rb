@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_24_030051) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_22_202434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_030051) do
     t.string "declare_proof"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bank_account_id", null: false
+    t.index ["bank_account_id"], name: "index_declares_on_bank_account_id"
     t.index ["declare_category_id"], name: "index_declares_on_declare_category_id"
     t.index ["user_id"], name: "index_declares_on_user_id"
   end
@@ -97,6 +99,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_030051) do
     t.string "memo_proof"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bank_account_id", null: false
+    t.index ["bank_account_id"], name: "index_memos_on_bank_account_id"
     t.index ["memo_category_id"], name: "index_memos_on_memo_category_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
   end
@@ -185,8 +189,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_030051) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bank_accounts", "payout_channels"
   add_foreign_key "bank_accounts", "users"
+  add_foreign_key "declares", "bank_accounts"
   add_foreign_key "declares", "declare_categories"
   add_foreign_key "declares", "users"
+  add_foreign_key "memos", "bank_accounts"
   add_foreign_key "memos", "memo_categories"
   add_foreign_key "memos", "users"
   add_foreign_key "user_informations", "users"

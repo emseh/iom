@@ -5,7 +5,7 @@ class MemosController < AuthenticationController
 
   # GET /memos or /memos.json
   def index
-    @memos = Memo.all.page(params[:page]).per(params[:per_page])
+    @memos = current_user.admin? ? Memo.all.page(params[:page]).per(params[:per_page]) : current_user.memos.page(params[:page]).per(params[:per_page])
   end
 
   # GET /memos/1 or /memos/1.json
@@ -79,6 +79,7 @@ class MemosController < AuthenticationController
 
   # Only allow a list of trusted parameters through.
   def memo_params
-    params.require(:memo).permit(:user_id, :memo_category_id, :status, :description, :amount, :memo_proof)
+    params.require(:memo).permit(:user_id, :memo_category_id, :status, :description, :amount, :memo_proof,
+                                 :bank_account_id)
   end
 end

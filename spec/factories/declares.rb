@@ -12,5 +12,6 @@ FactoryBot.define do
         Rails.root.join('spec/data/fake-invoice.png'), 'image/jpeg'
       )
     end
+    bank_account_id { Leader.find(user_id).bank_accounts.ids.sample }
   end
 end

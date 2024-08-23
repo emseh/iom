@@ -12,7 +12,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Patner Details</h3>
+    <h3 class="card-title">Memo Details</h3>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
@@ -21,6 +21,10 @@
         <tr>
           <td><strong>Name</strong></td>
           <td><%= @memo&.user&.user_information&.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Patner</strong></td>
+          <td><%= @memo&.user&.patner&.name %></td>
         </tr>
         <tr>
           <td><strong>Category</strong></td>
@@ -41,6 +45,10 @@
         <tr>
           <td><strong>Amount</strong></td>
           <td><%= format_to_indonesian_currency(@memo&.amount) %></td>
+        </tr>
+        <tr>
+          <td><strong>Bank Account</strong></td>
+          <td><%= @memo&.bank_account&.details %></td>
         </tr>
         <tr>
           <td><strong>Proof</strong></td>

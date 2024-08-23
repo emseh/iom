@@ -93,53 +93,55 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item menu-open">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Master Data
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="/admins" class="nav-link <%= active_class('/admins') %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Admin</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/leaders" class="nav-link <%= active_class('/leaders') %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Leader</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/patners" class="nav-link <%= active_class('/patners') %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Patner</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/memo_categories" class="nav-link <%= active_class('/memo_categories') %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Memo Category</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/declare_categories" class="nav-link <%= active_class('/declare_categories') %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Declare Category</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/payout_channels" class="nav-link <%= active_class('/payout_channels') %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Payout Channel</p>
-              </a>
-            </li>
-          </ul>
-        </li>
+        <% if current_user.admin? %>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Master Data
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admins" class="nav-link <%= active_class('/admins') %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/leaders" class="nav-link <%= active_class('/leaders') %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Leader</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/patners" class="nav-link <%= active_class('/patners') %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Patner</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/memo_categories" class="nav-link <%= active_class('/memo_categories') %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Memo Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/declare_categories" class="nav-link <%= active_class('/declare_categories') %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Declare Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/payout_channels" class="nav-link <%= active_class('/payout_channels') %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Payout Channel</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <% end %>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
