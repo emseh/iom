@@ -17,8 +17,10 @@
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">Declare Category List</h3>
-      <%= link_to new_declare_path, class: 'btn btn-success btn-sm float-right' do %>
-        <i class="fa fa-plus-square"></i> New
+      <% if current_user.leader? %>
+        <%= link_to new_declare_path, class: 'btn btn-success btn-sm float-right' do %>
+          <i class="fa fa-plus-square"></i> New
+        <% end %>
       <% end %>
     </div>
     <!-- /.card-header -->
@@ -26,14 +28,14 @@
       <table id="declares-table" class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Patner</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Amount</th>
+            <th><%= sort_link(@q, :user_user_information_full_name, 'Name') %></th>
+            <th><%= sort_link(@q, :user_patner_patner_name, 'Patner') %></th>
+            <th><%= sort_link(@q, :declare_category_id, 'Category') %></th>
+            <th><%= sort_link(@q, :status, [:status, 'updated_at desc'], 'Status') %></th>
+            <th><%= sort_link(@q, :amount, 'Amount') %></th>
             <th>Payout Channel</th>
             <th>Proof</th>
-            <th>Created At</th>
+            <th><%= sort_link(@q, :created_at, 'Created At') %></th>
             <th>Actions</th>
           </tr>
         </thead>

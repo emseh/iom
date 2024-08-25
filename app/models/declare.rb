@@ -9,6 +9,9 @@ class Declare < ApplicationRecord
   belongs_to :declare_category
   belongs_to :bank_account
 
+  has_one :user_information, through: :user
+  has_one :user_patner, through: :user
+  has_one :patner, through: :user
   has_one :payout_channel, through: :bank_account
 
   enum status: { submitted: 0, approved: 1, pending: 2, failed: 3, paid: 5, finished: 6 }
@@ -19,6 +22,14 @@ class Declare < ApplicationRecord
 
   after_update :set_paid, if: -> { status_previously_was == 'submitted' && status == 'approved' }
   after_update :send_whatsapp_notification, if: -> { status_previously_was == 'approved' && status == 'paid' }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    Declare.attribute_names + %w[id_value user_information_full_name]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[bank_account declare_category payout_channel rich_text_description user user_information user_patner]
+  end
 
   def set_paid
     Xendit::Api::Disbursement.create(disbursement_params)
