@@ -74,7 +74,7 @@ class DeclaresController < AuthenticationController
 
   def finish
     respond_to do |format|
-      if @declare.update(status: :finish)
+      if @declare.update(status: :finished)
         format.html { redirect_to declare_url(@declare), notice: 'Declare was successfully finished.' }
         format.json { render :show, status: :ok, location: @declare }
       else

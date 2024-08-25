@@ -18,9 +18,23 @@ class Declare < ApplicationRecord
   validate :sufficient_balance_for_approval, if: -> { status == 'approved' && status_was == 'submitted' }
 
   after_update :set_paid, if: -> { status_previously_was == 'submitted' && status == 'approved' }
+  after_update :send_whatsapp_notification, if: -> { status_previously_was == 'approved' && status == 'paid' }
 
   def set_paid
     Xendit::Api::Disbursement.create(disbursement_params)
+  end
+
+  def send_whatsapp_notification
+    number   = Phonelib.parse(user.user_information.phone_number).e164.delete('+')
+    message  = "Hi #{user.user_information.full_name}, \n\n" \
+               "Pencairan Anda untuk Declare #{declare_category.name}, telah berhasil dengan nominal sebesar #{idr_amount} \n\n" \
+               "https://#{ENV.fetch('HOST', nil)}/declares/#{id}"
+    WhatsappJs::Client.send_message(to: number, message: message)
+    update(status: :finished)
+  end
+
+  def idr_amount
+    ActionController::Base.helpers.number_to_currency(amount, unit: 'Rp ', separator: ',', delimiter: '.', precision: 2)
   end
 
   def disbursement_params
