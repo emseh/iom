@@ -6,8 +6,15 @@ class MemosController < AuthenticationController
   # GET /memos or /memos.json
   def index
     memos_scope = Memo.includes([user: [:user_information, :patner]], :memo_category, :bank_account, :payout_channel)
-    @memos = current_user.admin? ? memos_scope : memos_scope.where(user: current_user)
-    @memos = @memos.page(params[:page]).per(params[:per_page])
+
+    # Initialize Ransack search object
+    @q = memos_scope.ransack(params[:q])
+
+    # Apply Ransack search and filtering
+    @memos = current_user.admin? ? @q.result : @q.result.where(user: current_user)
+
+    # Paginate the results
+    @memos = @memos.order(created_at: :desc).page(params[:page]).per(params[:per_page])
   end
 
   # GET /memos/1 or /memos/1.json

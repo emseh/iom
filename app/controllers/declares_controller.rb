@@ -6,8 +6,15 @@ class DeclaresController < AuthenticationController
   # GET /declares or /declares.json
   def index
     declares_scope = Declare.includes([user: [:user_information, :patner]], :declare_category, :bank_account, :payout_channel)
-    @declares = current_user.admin? ? declares_scope : declares_scope.where(user: current_user)
-    @declares = @declares.page(params[:page]).per(params[:per_page])
+
+    # Initialize Ransack search object
+    @q = declares_scope.ransack(params[:q])
+
+    # Apply Ransack search and filtering
+    @declares = current_user.admin? ? @q.result : @q.result.where(user: current_user)
+
+    # Paginate the results
+    @declares = @declares.order(created_at: :desc).page(params[:page]).per(params[:per_page])
   end
 
   # GET /declares/1 or /declares/1.json

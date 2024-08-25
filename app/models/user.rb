@@ -23,12 +23,22 @@ class User < ApplicationRecord
   before_save :assign_default_role
   after_create :must_have_a_role
 
+  delegate :full_name, to: :user_information, allow_nil: false
+
   def admin?
     has_role?('admin')
   end
 
   def leader?
     has_role?('leader')
+  end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[email full_name]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[patner user_information]
   end
 
   private
