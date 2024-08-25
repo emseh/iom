@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   resources :declares do
     member do
       post :approve
+      post :finish
     end
   end
   resources :memos do
     member do
       post :approve
+      post :finish
     end
   end
   resources :leaders
