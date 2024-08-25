@@ -65,6 +65,11 @@
             <%= link_to declares_path, class: 'btn btn-secondary btn-sm' do %>
               <i class="fa fa-chevron-left"></i> Back
             <% end %>
+            <% if @declare.paid? && @declare.declare_proof? && current_user.admin? %>
+              <%= link_to finish_declare_path(@declare), data: { turbo_method: :post, turbo_confirm: 'Are you sure you want to finish this?' }, class: 'btn btn-info btn-sm ml-2' do %>
+                Finish
+              <% end %>
+            <% end %>
             <% if @declare.submitted? %>
               <% if current_user.admin? %>
                 <%= link_to approve_declare_path(@declare), data: { turbo_method: :post, turbo_confirm: 'Are you sure you want to approve this?' }, class: 'btn btn-info btn-sm ml-2' do %>
