@@ -23,6 +23,10 @@
           <td><%= @memo&.user&.user_information&.full_name %></td>
         </tr>
         <tr>
+          <td><strong>Phone Number</strong></td>
+          <td><%= @memo&.user&.user_information&.phone_number %></td>
+        </tr>
+        <tr>
           <td><strong>Patner</strong></td>
           <td><%= @memo&.user&.patner&.name %></td>
         </tr>
@@ -32,7 +36,7 @@
         </tr>
         <tr>
           <td><strong>Status</strong></td>
-          <td><%= @memo&.status %></td>
+          <td><%= @memo&.status&.upcase %></td>
         </tr>
         <tr>
           <td><strong>Created At</strong></td>
@@ -79,6 +83,9 @@
               <% if current_user.admin? %>
                 <%= link_to approve_memo_path(@memo), data: { turbo_method: :post, turbo_confirm: 'Are you sure you want to approve this?' }, class: 'btn btn-info btn-sm ml-2' do %>
                   <i class="fas fa-check"></i> Approve
+                <% end %>
+                <%= link_to reject_memo_path(@memo), data: { turbo_method: :post, turbo_confirm: 'Are you sure you want to reject this?' }, class: 'btn btn-danger btn-sm ml-2' do %>
+                  <i class="fas fa-check"></i> Reject
                 <% end %>
               <% end %>
               <% if @memo.user_id == current_user.id %>

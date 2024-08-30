@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MemosController < AuthenticationController
-  before_action :set_memo, only: %i[show edit update destroy approve finish]
+  before_action :set_memo, only: %i[show edit update destroy approve finish reject]
 
   # GET /memos or /memos.json
   def index
@@ -83,6 +83,18 @@ class MemosController < AuthenticationController
     respond_to do |format|
       if @memo.update(status: :finished)
         format.html { redirect_to memo_url(@memo), notice: 'Memo was successfully finished.' }
+        format.json { render :show, status: :ok, location: @memo }
+      else
+        format.html { redirect_to memo_url(@memo), alert: @memo.errors.full_messages.to_sentence }
+        format.json { render json: @memo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def reject
+    respond_to do |format|
+      if @memo.update(status: :rejected)
+        format.html { redirect_to memo_url(@memo), notice: 'Memo was successfully rejected.' }
         format.json { render :show, status: :ok, location: @memo }
       else
         format.html { redirect_to memo_url(@memo), alert: @memo.errors.full_messages.to_sentence }

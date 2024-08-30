@@ -14,7 +14,7 @@ class Declare < ApplicationRecord
   has_one :patner, through: :user
   has_one :payout_channel, through: :bank_account
 
-  enum status: { submitted: 0, approved: 1, pending: 2, failed: 3, paid: 5, finished: 6 }
+  enum status: { submitted: 0, approved: 1, pending: 2, failed: 3, paid: 5, finished: 6, rejected: 7 }
 
   validates :status, :description, presence: true
   validates :amount, numericality: { greater_than: 0 }
@@ -42,6 +42,8 @@ class Declare < ApplicationRecord
                "https://#{ENV.fetch('HOST', nil)}/declares/#{id}"
     WhatsappJs::Client.send_message(to: number, message: message)
     update(status: :finished)
+  rescue StandardError => e
+    Rails.logger.debug e.message
   end
 
   def idr_amount

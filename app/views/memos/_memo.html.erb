@@ -27,7 +27,7 @@
     <td><%= memo&.user&.user_information&.full_name %></td>
     <td><%= memo&.user&.patner&.name %></td>
     <td><%= memo&.memo_category&.name %></td>
-    <td><%= memo&.status %></td>
+    <td><%= memo&.status&.upcase %></td>
     <td><%= format_to_indonesian_currency(memo&.amount) %></td>
     <td><%= memo&.payout_channel&.code %></td>
     <td><%= memo&.memo_proof.present? ? 'Uploaded' : 'Not Uploaded' %></td>
