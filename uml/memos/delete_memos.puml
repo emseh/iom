@@ -1,0 +1,18 @@
+@startuml
+actor User
+boundary "views/memos/index.html.erb" as View
+control "MemosController" as Controller
+entity "Memo Model" as Model
+database "Database" as DB
+
+User -> View: Click "Delete" on memo
+View -> Controller: Send DELETE /memos/:id request
+Controller -> Model: Find memo by ID
+Model -> DB: Query memo by ID
+DB --> Model: Return memo object
+Model -> DB: Delete memo from database
+DB --> Model: Return success/failure
+Model --> Controller: Confirm delete
+Controller -> View: Redirect to memos index page
+View -> User: Display updated list of memos
+@enduml

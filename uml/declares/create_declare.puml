@@ -1,0 +1,16 @@
+@startuml
+actor User
+boundary "views/declares/new.html.erb" as View
+control "DeclaresController" as Controller
+entity "Declare Model" as Model
+database "Database" as DB
+
+User -> View: Fill out declare form and submit
+View -> Controller: Send POST /declares request
+Controller -> Model: Create new declare object
+Model -> DB: Save declare to database
+DB --> Model: Return success/failure
+Model --> Controller: Return new declare object
+Controller -> View: Redirect to declares show page
+View -> User: Display new declare
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+actor User
+boundary "views/declares/index.html.erb" as View
+control "DeclaresController" as Controller
+entity "Declare Model" as Model
+database "Database" as DB
+
+User -> View: Click "Delete" on declare
+View -> Controller: Send DELETE /declares/:id request
+Controller -> Model: Find declare by ID
+Model -> DB: Query declare by ID
+DB --> Model: Return declare object
+Model -> DB: Delete declare from database
+DB --> Model: Return success/failure
+Model --> Controller: Confirm delete
+Controller -> View: Redirect to declares index page
+View -> User: Display updated list of declares
+@enduml

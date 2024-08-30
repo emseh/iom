@@ -1,0 +1,19 @@
+@startuml
+actor User
+boundary "views/declares/edit.html.erb" as View
+control "DeclaresController" as Controller
+entity "Declare Model" as Model
+database "Database" as DB
+
+User -> View: Edit declare form and submit
+View -> Controller: Send PATCH/PUT /declares/:id request
+Controller -> Model: Find declare by ID
+Model -> DB: Query declare by ID
+DB --> Model: Return declare object
+Model -> Model: Update declare attributes
+Model -> DB: Save updated declare
+DB --> Model: Return success/failure
+Model --> Controller: Return updated declare object
+Controller -> View: Redirect to declares show page
+View -> User: Display updated declare
+@enduml

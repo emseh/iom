@@ -1,0 +1,24 @@
+@startuml
+actor Admin as User
+control "DeclaresController" as DC
+entity "Declare Model" as D
+participant "Xendit::Api::Disbursement" as XD
+participant "Xendit::DisbursementClient" as XDC
+control "Xendit::DisbursementsController" as XDCtrl
+participant "WhatsappJs::Client" as Whatsapp
+
+User -> DC: approve
+DC -> D: update(status: :approved)
+D -> XD: set_paid
+XD -> XDC: create(disbursement_params)
+XDC -> XenditAPI: POST /disbursements
+XenditAPI -> XDC: Response (success/failure)
+XenditAPI -> XDCtrl: callback (status: COMPLETED or FAILED)
+alt Status: COMPLETED
+    XDCtrl -> D: update(status: 'paid')
+    D -> Whatsapp: send_whatsapp_notification
+    Whatsapp -> User: send_message
+else Status: FAILED
+    XDCtrl -> D: update(status: 'failed')
+end
+@enduml

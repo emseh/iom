@@ -1,0 +1,11 @@
+@startuml
+actor User
+boundary "views/layouts/application.html.erb" as View
+control "sessions_controller" as Controller
+database "Database" as DB
+
+User -> View: Click "Logout" button
+View -> Controller: Send logout request (DELETE /users/sign_out)
+Controller -> DB: Clear session data
+Controller -> User: Redirect to homepage or login page
+@enduml

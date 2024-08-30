@@ -1,0 +1,16 @@
+@startuml
+actor User
+boundary "views/memos/index.html.erb" as View
+control "MemosController" as Controller
+entity "Memo Model" as Model
+database "Database" as DB
+
+User -> View: Request list of memos
+View -> Controller: Send GET /memos request
+Controller -> Model: Query all memos
+Model -> DB: Fetch list of memos
+DB --> Model: Return list of memos
+Model --> Controller: Return list of memos
+Controller -> View: Render list of memos
+View -> User: Display list of memos
+@enduml

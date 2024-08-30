@@ -1,0 +1,24 @@
+@startuml
+actor Admin as User
+control "MemosController" as MC
+entity "Memo Model" as M
+participant "Xendit::Api::Disbursement" as XD
+participant "Xendit::DisbursementClient" as XDC
+control "Xendit::DisbursementsController" as XDCtrl
+participant "WhatsappJs::Client" as Whatsapp
+
+User -> MC: approve
+MC -> M: update(status: :approved)
+M -> XD: set_paid
+XD -> XDC: create(disbursement_params)
+XDC -> XenditAPI: POST /disbursements
+XenditAPI -> XDC: Response (success/failure)
+XenditAPI -> XDCtrl: callback (status: COMPLETED or FAILED)
+alt Status: COMPLETED
+    XDCtrl -> M: update(status: 'paid')
+    M -> Whatsapp: send_whatsapp_notification
+    Whatsapp -> User: send_message
+else Status: FAILED
+    XDCtrl -> M: update(status: 'failed')
+end
+@enduml

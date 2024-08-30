@@ -1,0 +1,21 @@
+@startuml
+actor User
+boundary "views/sessions/new.html.erb" as View
+control "sessions_controller" as Controller
+entity "User model" as UserModel
+database "Database" as DB
+
+User -> View: Fill out and submit login form
+View -> Controller: Send credentials (POST /users/sign_in)
+Controller -> UserModel: User.find_by(email)
+UserModel -> DB: Query user by email
+DB --> UserModel: Return user record
+UserModel -> Controller: Validate password (authenticate)
+alt Authentication Successful
+    Controller -> DB: Update session data
+    Controller -> User: Redirect to dashboard
+else Authentication Failed
+    Controller -> User: Show error message
+    User -> View: Redirect to login page
+end
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+actor User
+boundary "views/memos/edit.html.erb" as View
+control "MemosController" as Controller
+entity "Memo Model" as Model
+database "Database" as DB
+
+User -> View: Edit memo form and submit
+View -> Controller: Send PATCH/PUT /memos/:id request
+Controller -> Model: Find memo by ID
+Model -> DB: Query memo by ID
+DB --> Model: Return memo object
+Model -> Model: Update memo attributes
+Model -> DB: Save updated memo
+DB --> Model: Return success/failure
+Model --> Controller: Return updated memo object
+Controller -> View: Redirect to memos show page
+View -> User: Display updated memo
+@enduml

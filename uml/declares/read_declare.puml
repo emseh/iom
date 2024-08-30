@@ -1,0 +1,16 @@
+@startuml
+actor User
+boundary "views/declares/show.html.erb" as View
+control "DeclaresController" as Controller
+entity "Declare Model" as Model
+database "Database" as DB
+
+User -> View: Request to view declare
+View -> Controller: Send GET /declares/:id request
+Controller -> Model: Find declare by ID
+Model -> DB: Query declare by ID
+DB --> Model: Return declare object
+Model --> Controller: Pass declare object
+Controller -> View: Render declare show page
+View -> User: Display declare details
+@enduml
